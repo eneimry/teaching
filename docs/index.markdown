@@ -5,4 +5,4 @@
 layout: home
 ---
 
-Bonjour à tous
+Bonjour à tous ! Vous allez bien ?
