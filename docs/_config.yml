@@ -28,7 +28,7 @@ twitter_username: franz825
 github_username:  franz825
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: minima
 plugins:
   - jekyll-feed
 
