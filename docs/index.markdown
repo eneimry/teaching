@@ -5,6 +5,4 @@
 layout: home
 ---
 
-# Salut toi !
-
-- Tu **vas** bien?
+Bonjour à tous
