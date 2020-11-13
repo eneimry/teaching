@@ -1,0 +1,25 @@
+I"9<!-- ---
+layout: default
+title: LGEO2240
+permalink: /tecto/index
+--- -->
+
+<h1 id="lgeo2240---tectonic-geomorphology">LGEO2240 - Tectonic Geomorphology</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>As you learned during the lectures of Tectonic Geomorphology, the topography of the earth surface experiences changes and modifications when the base level of erosion is modified. These changes are related either to climatic or tectonic forcing. In fact, when the topography of a given area is subject to forcing, rivers are no longer in equilibrium. As a consequence, rivers will adjust their profile by regressive erosion, but also the morphology of the entire river catchment area.
+The aim of the research project is to highlight the geomorphologic activity influencing the topography of selected river catchments in Belgium, on the basis of a geomorphometric analysis. The main data available for this analysis is a Digital Elevation Model (DEM) resampled from LiDAR data.</p>
+
+<h2 id="expected-outputs">Expected outputs</h2>
+
+<p>The DEM analysis should include, at least, the following items for a selection of rivers:</p>
+<ul>
+  <li>longitudinal profiles</li>
+  <li>transversal profiles</li>
+  <li>hypsometric curves</li>
+  <li>slope vs drainage area plots</li>
+  <li>channel steepness</li>
+  <li>stream power indices.</li>
+</ul>
+:ET

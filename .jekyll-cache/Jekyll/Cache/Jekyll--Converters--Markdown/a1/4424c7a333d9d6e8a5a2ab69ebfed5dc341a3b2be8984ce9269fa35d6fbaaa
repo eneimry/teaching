@@ -1,0 +1,225 @@
+I"�/<!-- ---
+layout: default
+title: Additional resources
+permalink: /tecto/add-resources
+--- -->
+
+<h1 id="additional-resources">Additional resources</h1>
+
+<h2 id="qgis-tips-and-hints">QGIS tips and hints</h2>
+
+<h3 id="good-practices">Good practices</h3>
+
+<ul>
+  <li>Always save the outputs of toolboxes on the disk of your machine. Do <strong>not</strong> use temporary files.</li>
+  <li>Always work with layers which have <strong>the same projection</strong>. QGIS efficiently deals with the EPSG codes, i.e. 4-5 digit numbers that represent coordinate reference system definitions. Also make sure that the data frame has the same projection than layers. EPSG codes are listed on the <a href="https://epsg.io/">epsg.io</a> or <a href="https://spatialreference.org/ref/epsg/">spatialreference.org</a> websites. For instance, the WGS84 is EPSG:4326, the Lambert 72 is EPSG:31370, and the UTM 31N is EPSG:32631. As in ArGIS, the data frame peojection is defined by the projection of the first layer imported in the project.
+    <ul>
+      <li>To reproject a shapefile: “Menu Vector &gt; Data Management Tools &gt; Reproject Layer”.</li>
+      <li>To reproject a raster: “Menu Raster &gt; Projections &gt; Warp (Reproject)”.</li>
+      <li>To define the data frame coordinate reference system: “Menu Project &gt; Properties” &gt; Tab “CRS”.</li>
+    </ul>
+  </li>
+  <li>Avoid spaces and special characters in filenames.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">.shp</code> for vector data and <code class="language-plaintext highlighter-rouge">.tif</code> for raster data. For raster data, it might also be <code class="language-plaintext highlighter-rouge">.sgrd</code> or <code class="language-plaintext highlighter-rouge">.sdat</code>, depending on the toolboxes that you run.</li>
+</ul>
+
+<h3 id="layer-not-rendering-properly">Layer not rendering properly</h3>
+
+<p>Single-band raster datasets are usually rendered using a color ramp from black to white. In practice, it means that the range of values contained in the datasets is stretched over the black to white gradient. If the distribution of these values is not relatively constant over the entire range, e.g. the majority of values is less than 1000 while only a few pixels have very large values (e.g. &gt; 10^6), the GIS will render a completely black layer. This might be caused by a mis-interpretation of no data values in digital elevation models. It is also typical for flow accumulation data (few large values in rivers while majority of hillslopes have low values).</p>
+
+<p>To properly render such raster datasets, the idea is to ask QGIS to render values only on the currently visible range of pixel values. To do so:</p>
+
+<ol>
+  <li>Open the properties of the layer.</li>
+  <li>Open the “Symbology” tab.</li>
+  <li>In the “Min/Max Value Settings” section, define “Statistics Extent” as “Updated canvas” in the dropdown menu.</li>
+</ol>
+
+<p><img src="imgs/qgis-stretch-values.png" alt="raster-rendering" /></p>
+
+<h3 id="processing-toolboxes">Processing toolboxes</h3>
+
+<p>If the “Processing Toolbox” panel has disappeared, simply go to the “Menu Processing &gt; Toolbox”.</p>
+
+<h3 id="install-plugins-in-qgis">Install plugins in QGIS</h3>
+
+<ol>
+  <li>Go to menu “Plugins &gt; Manage and install plugins”.</li>
+  <li>Browse the plugins and install the ones needed, e.g. “Profile tools” or “Base layers”.
+ <img src="imgs/Plugins.png" alt="Plugins_image" /></li>
+  <li>Plugins are now accessible either in the menu “Plugins” or in the other menus, e.g. “Processing”.</li>
+</ol>
+
+<h3 id="add-base-layers">Add base layers</h3>
+
+<p>You can add base layers, e.g. OpenStreetMap, using the plugin “QuickMapServices” plugin in QGIS.</p>
+
+<ol>
+  <li>Install the plugin via the Plugin Menu.</li>
+  <li>Activate base layers via the menu “Web &gt; QuickMapServices”.</li>
+</ol>
+
+<h3 id="add-wms-layer">Add WMS layer</h3>
+
+<p>GIS resources may be stored on GIS servers. This is often the case in companies, public administrations,… where several people need to access up-to-date versions of spatial datasets. Such datasets can potentially be accessed using the Web Map Service (WMS) protocol by external users, directly in their local GIS software. To do that, you need the url of the WMS and, if applicable, the credentials.</p>
+
+<p>WMS adresses are usually stored in metadata of spatial datasets. For instance, wms of WalonMap data are accessible in the “Fiche descriptive &gt; Accès” of each data.</p>
+
+<p><img src="imgs/wms-walonmap.png" alt="wms-walonmap" /></p>
+
+<p>Two lists of WMS in Belgium:</p>
+
+<ul>
+  <li>The “institutional” repository: <a href="https://www.geo.be/">https://www.geo.be/</a></li>
+  <li>A “unofficial” list: <a href="https://wms.michelstuyts.be/">https://wms.michelstuyts.be/</a></li>
+</ul>
+
+<p>In practice, in QGIS, for the IGN cartoweb layer:</p>
+
+<ol>
+  <li>Menu “Layer” &gt; “Add Layer” &gt; “Add WMS/WMTS Layer”</li>
+  <li>
+    <p>Click “New” and enter these parameters.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>IGN</td>
+        </tr>
+        <tr>
+          <td>URL</td>
+          <td><a href="http://wms.ngi.be/inspire/topomaps/service?version=1.3.0">http://wms.ngi.be/inspire/topomaps/service?version=1.3.0</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Click “OK”.</li>
+  <li>Select the layer and click “Connect”. A list of all available layers is provided in the table.</li>
+  <li>
+    <p>Choose which layer you want to add in your project and click “Add”.</p>
+
+    <p><img src="imgs/wms-ign.png" alt="wms-ign" /></p>
+  </li>
+</ol>
+
+<h3 id="crop-dem">Crop DEM</h3>
+
+<ol>
+  <li>Open the DEM in QGIS.</li>
+  <li>Select the tool “Clip Raster by Extent” in the menu “Raster &gt; Extraction”.</li>
+  <li>Fill the toolbox. You can either define the extent interactively by drawing a rectangle in the dataframe or use a shapefile.</li>
+  <li>Export the result in the <strong>.bil format</strong>.</li>
+</ol>
+
+<h3 id="use-profile-tool">Use Profile tool</h3>
+
+<ol>
+  <li>In the table of contents of QGIS, select the DEM layer.</li>
+  <li>Open “Profile tool “ via the menu “Plugins”.</li>
+  <li>Click on the button “Add Layer”, to define the DEM from which you will extract elevation.</li>
+  <li>In the “Options” panel, define “Selection” as “Temporary polyline”.</li>
+  <li>Interactively draw a line on the DEM to define the extent of the topographic profile. You can also use polyline shapefiles.
+ <img src="imgs/Profile-tool.png" alt="Profile-tool_image" /></li>
+  <li>Once the profile is ok, open the “Table” tab.</li>
+  <li>Click on “Copy to clipboard (with coordinates)”.</li>
+  <li>Open Excel and paste the profile.</li>
+  <li>Headers of columns are: “Distance” / “Longitude” / “Latitude” / “Elevation”.</li>
+  <li>You can now plot the profile directly within Excel, and eventually save the table.</li>
+</ol>
+
+<h3 id="add-text-delimited-layers">Add text-delimited layers</h3>
+
+<p>Based on a csv file containing coordinates, you can create a layer to be spatialised in QGIS, e.g. channel network outputs from LSDTopoTools.</p>
+
+<ol>
+  <li>Open the tool ‘Add delimited text layer’ in the menu “Layer &gt; Add Layer”.</li>
+  <li>Browse to find the csv file containing coordinates to be spatialised.
+    <ol>
+      <li>Select <strong>csv file format</strong> just below where you select the file.</li>
+      <li>You need to check on the <strong>X Field</strong> and <strong>Y Field</strong> entries to make sure that they are correct!</li>
+      <li>Define the correct coordinate system, in which points are defined.</li>
+      <li>Click on the button “Add”.</li>
+      <li>A temporary point layer is created. You need to save it to a permanent file if needed.</li>
+    </ol>
+  </li>
+</ol>
+
+<p><img src="imgs/Text-delimited-layer.png" alt="Delimited-text-layer_image" /></p>
+
+<h3 id="convert-raster-to-vector">Convert raster to vector</h3>
+
+<p>This tool is useful to create polygons defining the extent of river catchments, because LSDTopoTools provides a raster as output.</p>
+<ol>
+  <li>Open the “Polygonize” tool in the menu “Raster &gt; Conversion”.</li>
+  <li>
+    <p>Define which raster you need to process and run…</p>
+
+    <p><img src="imgs/Polygonize.png" alt="Polygonize_image" /></p>
+  </li>
+</ol>
+
+<h3 id="extract-values-of-rasters-to-points">Extract values of rasters to points</h3>
+
+<p>You can extract raster values at the location of points, defined by a shapefile. To do so, use the tool “Add raster values to poitns”, available in the menu “Processing &gt; Toolbox”. Either search by name or find in the the toolbox structure: SAGA &gt; Vector / Raster.</p>
+
+<p><img src="imgs/ExtractValuesPoints.png" alt="ExtractValuesToPoints" /></p>
+
+<p>If the “Add raster values to points” does not work properly, an built-in QGIS alternative is the “Sample Raster Values”.</p>
+
+<p><img src="imgs/qgis-sample-values.png" alt="qgis-sample-values" /></p>
+
+<hr />
+
+<h2 id="oasis-shared-drive">OASIS shared drive</h2>
+
+<p>Instructions to connect to the OASIS shared drive from outside the UCL network are available <a href="https://intranet.uclouvain.be/fr/myucl/services-informatiques/service-fichier-groupe.html">here</a>. The adresse of the drive is: <code class="language-plaintext highlighter-rouge">\\oasis.uclouvain.be\dfs\groups\d\did-SST-Commun\LGEO2240</code></p>
+
+<hr />
+
+<h2 id="mobaxterm-tips-and-hints">MobaXterm tips and hints</h2>
+
+<ul>
+  <li>When you download files from the server (<strong>do not “Drag and drop”</strong>):
+    <ol>
+      <li>Select them manually.</li>
+      <li>Right-click and select “Download”.</li>
+      <li>Choose a directory.</li>
+    </ol>
+  </li>
+  <li>To paste a copied text line, simply right-click in the terminal window, where you would write the text line.</li>
+  <li>To visualise or edit text files from the server:
+    <ol>
+      <li>In the file browser of MobaXterm software, double-click on the file. It will be opened in Notepad.</li>
+      <li>View and/or edit it.</li>
+      <li>Save the file and select “Yes” when the following screen appears. It will upload the modified file directly on the server.</li>
+    </ol>
+  </li>
+</ul>
+
+<p><img src="imgs/Save-file.png" alt="Save-files_image" /></p>
+
+<h2 id="lsdtopotools-tips">LSDTopoTools tips</h2>
+
+<p>LSDTopotools requires DEM in <code class="language-plaintext highlighter-rouge">bil</code> format, projected in the UTM coordinate system. The easiest way to properly format files is using the following procedure.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Project DEM into UTM projection</span>
+gdalwarp <span class="nt">-t_srs</span> <span class="s1">'+proj=utm +zone=31 +datum=WGS84'</span> <span class="nt">-ot</span> Int16 <span class="nt">-of</span> ENVI <span class="nt">-dstnodata</span> <span class="nt">-9999</span> <span class="nt">-tr</span> 10 10 <span class="nt">-r</span> bilinear input_filename.tif output_filename.bil
+<span class="c"># Convert the DEM into a ENVI BIL format</span>
+gdal_translate <span class="nt">-of</span> ENVI dem-input.tif dem-output.bil
+</code></pre></div></div>
+
+<p>More info <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html">here</a>.</p>
+
+<h2 id="oasis-server-not-in-2020-2021">OASIS server (not in 2020-2021)</h2>
+
+<p>All the data are stored on the OASIS shared drive from the university. In the computer rooms of the faculty, the path is; <code class="language-plaintext highlighter-rouge">Y:/SC/LGEO2240</code>.</p>
+
+<p>Instructions to connect to the OASIS shared drive from outside the UCL network are available <a href="https://intranet.uclouvain.be/fr/myucl/services-informatiques/service-fichier-groupe.html">here</a>. The adresse of the drive is: <code class="language-plaintext highlighter-rouge">\\oasis.uclouvain.be\dfs\groups\d\did-SST-Commun\LGEO2240</code></p>
+:ET

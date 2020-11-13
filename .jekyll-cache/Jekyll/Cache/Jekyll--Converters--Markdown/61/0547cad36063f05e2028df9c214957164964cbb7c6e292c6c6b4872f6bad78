@@ -1,0 +1,380 @@
+I"�;<!-- ---
+layout: default
+title: Technical considerations
+permalink: /tecto/technical-considerations
+--- -->
+
+<h1 id="technical-considerations">Technical considerations</h1>
+
+<p>In order to perform efficient topographic analyses, we will use the LSDTopoTools software. Its use will require a small learning curve, but you will quickly see its benefits. If not, try to perform the same analysis over such large areas manually in ArcGIS or QGIS, as efficiently as in command line via the terminal using the LSDTopoTools software on a <strong>server</strong>…</p>
+
+<h2 id="server-and-ssh">Server and SSH</h2>
+
+<h3 id="the-client-server-model-and-the-pelican-server">The client-server model and the Pelican server</h3>
+
+<p>The software is more efficiently and easier to use when deployed on a remote Linux server. A server is a piece of computer hardware that provides functionality for other programs or devices, called clients. This architecture is called the client–server model. Servers can provide various functionalities, often called “services”, such as sharing data or resources among multiple clients, or performing computation for a client. A single server can serve multiple clients, and a single client can use multiple servers. Typical servers are database servers, file servers, mail servers, print servers, web servers, game servers, and application servers.</p>
+
+<p><img src="imgs/client-server-model.png" alt="client-server-illus" /></p>
+
+<p>The server that we will use during the practical sessions is the “Pelican” server, which is part of the <a href="https://uclouvain.be/en/research/cism">CISM</a> (Center for High Performance Computing and Mass Storage) of the UCLouvain. The Pelican server will allow you to run LSDTopotools, but also provides Nextcloud and JupyterHub services. <a href="https://nextcloud.com/">Nextcloud</a> is an open-source file hosting service (similar to Dropbox, OneDrive,…). <a href="https://jupyter.org/hub">JupyterHub</a> is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.</p>
+
+<h3 id="ssh-protocol-and-client">SSH protocol and client</h3>
+
+<p>The connection between the client (you) and the server is done via the internet, which is an open and unsecured network by definition. In order to access the server in a secure way, all the transactions between the client and the server are done using a cryptographic network protocol, i.e. the Secure Shell (SSH). SSH refers both to the cryptographic network protocol and to the suite of utilities that implement that protocol. SSH uses the client-server model, connecting a Secure Shell client application, which is the end where  the session is displayed, with an SSH server, which is the end where the session runs.</p>
+
+<p>SSH clients are softwares which enable the user to connect to the server using the SSH protocol. Depending on the OS on which your machine is running, several SSH clients are possible.</p>
+
+<ul>
+  <li>On Windows: <a href="https://mobaxterm.mobatek.net/">MobaXterm</a>.</li>
+  <li>On Mac and Linux: <a href="https://termius.com/">Termius</a> (also run on Windows but the free version has limited possibilities for file transfer).</li>
+</ul>
+
+<hr />
+
+<h2 id="cism-account">CISM account</h2>
+
+<p>In order to connect to the server, a CISM account is required. To create one, you first need to be connected to the UCLouvain network, i.e. via the wireless network, a computer in a didactic room or via <a href="https://uds.siws.ucl.ac.be/login/">UDS</a> (in this case, use Firefox and not Chrome).</p>
+
+<ol>
+  <li>Visit the following web adress: <a href="https://www.cism.ucl.ac.be/cilog">https://www.cism.ucl.ac.be/cilog</a></li>
+  <li>Submit your <strong>@student.uclouvain.be</strong> email adress via the form.</li>
+  <li>Follow the link that you will nearly instantly receive by email.</li>
+  <li>
+    <p>Fill in the form with the following details:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Supervisor email</td>
+          <td><em>your teaching assistant @uclouvain.be email</em></td>
+        </tr>
+        <tr>
+          <td>Intended usage</td>
+          <td>Interactive computing only</td>
+        </tr>
+        <tr>
+          <td>Institution</td>
+          <td>ELI &gt; ELIC</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Submit the form for validation by an administrator.</li>
+</ol>
+
+<hr />
+
+<h2 id="ssh-clients">SSH clients</h2>
+
+<h3 id="on-windows">On Windows</h3>
+
+<p><strong>Side note:</strong> If you are working on a UCL desktop PC, simply open MobaXterm software (Search by name ou via “Menu Démarrer &gt; Electricité”)</p>
+
+<p>To install MobaXterm on your machine, follow these steps:</p>
+
+<ol>
+  <li>Download MobaXterm <strong>Portable Edition</strong> software via this <a href="https://mobaxterm.mobatek.net/download-home-edition.html">link</a>. It is a portable terminal allowing you to easily connect to a remote server and transfer files from a local disk to the server, and vice-versa.</li>
+  <li>Extract it the zip file in a dedicated folder on your disk.</li>
+  <li>Run the <code class="language-plaintext highlighter-rouge">MobaXterm_Personal_20.4.exe</code> file.</li>
+</ol>
+
+<p>If you are kind of a geek person, you will directly see that this software offers plenty of possibilities, e.g. SSH, FTP, VNC connections, X11 servers… However, we are here only interested in the SSH component.</p>
+
+<h3 id="on-mac--linux">On Mac / Linux</h3>
+
+<p>To install Terminus on Mac or Linux, visit the download <a href="https://github.com/Eugeny/terminus/releases/tag/v1.0.120">page</a> and download the file which suits your distribution. Install it as any other program under your OS</p>
+
+<hr />
+
+<h2 id="connection-to-the-pelican-server">Connection to the Pelican server</h2>
+
+<h3 id="on-windows-1">On Windows</h3>
+
+<p>To connect to Pelican via SSH, follow these steps:</p>
+
+<ol>
+  <li>
+    <p>Open the <code class="language-plaintext highlighter-rouge">MobaXterm_Personal_20.4.exe</code> file.</p>
+
+    <p><img src="imgs/MobaXterm.png" alt="MobaXterm_image" /></p>
+  </li>
+  <li>Go to the menu “Sessions &gt; New Session”.</li>
+  <li>
+    <p>Select the “SSH” session and fill the “Basic SSH settings” as follows:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Inside UCLouvain network</th>
+          <th>Outside UCLouvain network</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Remote host</td>
+          <td>pelican.cism.ucl.ac.be</td>
+          <td>pelican</td>
+        </tr>
+        <tr>
+          <td>Specify username</td>
+          <td>check</td>
+          <td>check</td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><em>CISM_LOGIN</em></td>
+          <td><em>CISM_LOGIN</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>If your are <strong>inside</strong> the UCLouvain network, leave everything else as is, and click “OK”.</p>
+
+    <p><img src="imgs/session-params.png" alt="MobaXterm-session_image" /></p>
+  </li>
+  <li>
+    <p>If you are <strong>outside</strong> the UCLouvain network, click on the “Network settings” tab and click on the “SSH gateway (jump host)” icon.</p>
+
+    <p><img src="imgs/network-settings.png" alt="network-settings" /></p>
+  </li>
+  <li>
+    <p>In this tab, fill the following parameters and click “OK” to close the window and click “OK” to validate the session:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Outside UCLouvain network</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gateway host</td>
+          <td>gwcism.cism.ucl.ac.be</td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><em>CISM_LOGIN</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="imgs/jump-host.png" alt="jump-host" /></p>
+  </li>
+  <li>
+    <p>In order to open the session, MobaXterm first ask you the password for the gateway (<code class="language-plaintext highlighter-rouge">gwcism.cism.ucl.ac.be</code>) if you are outside the UCLouvain network:</p>
+
+    <p><img src="imgs/gwcism-password.png" alt="gwcism-password" /></p>
+  </li>
+  <li>
+    <p>And then prompt you the password for the Pelican server itself. Both passwords are the password of your CISM account. In a linux terminal, the cursor on screen will not move, and there is no indicator the password is being entered at all. This is intentional and serves as a security mechanism, unlike entering a password into a web form or a standard GUI login screen, which is typically masked as asterisks or bullets. The reason is rather simple, it provides no indication for how long a password is, offering some further obfuscation to password entry.</p>
+
+    <p><img src="imgs/pelican-password.png" alt="pelican-password" /></p>
+  </li>
+  <li>If your terminal display a lot of “strange” information, i.e. the server specifications, but also a <strong>pelican drawing</strong>, it means that you are now connected to the Pelican server. You can then interact with the server by typing your first command, e.g. <code class="language-plaintext highlighter-rouge">pwd</code>.</li>
+</ol>
+
+<p>The MobaXterm window has two panels. The left (white) panel has several tabs in the vertical axis. The <em>SFTP</em> tab is the file browser on the server. It allows you to create files and folders on the server, as well as upload and download files from and to the server. The <em>Sessions</em> tab contains the different saved sessions. The right (black) panel is the terminal, which allows you to can interact with the server using command lines.</p>
+
+<p><img src="imgs/mobaxterm-session.png" alt="mobaxterm-env" /></p>
+
+<h3 id="on-mac--linux-1">On Mac / Linux</h3>
+
+<ol>
+  <li>
+    <p>Open Terminus and select “Settings”.</p>
+
+    <p><img src="imgs/terminus-window.png" alt="terminus-windows" /></p>
+  </li>
+  <li>On the left panel, select “SSH” and then “Add connection”.</li>
+  <li>
+    <p>Create a connection to the gateway using the following parameters:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>gateway</td>
+        </tr>
+        <tr>
+          <td>Group</td>
+          <td>cism</td>
+        </tr>
+        <tr>
+          <td>Host</td>
+          <td>gwcism.cism.ucl.ac.be</td>
+        </tr>
+        <tr>
+          <td>Port</td>
+          <td>22 (already there)</td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><em>MY_LOGIN</em> (CISM)</td>
+        </tr>
+        <tr>
+          <td>Authentication</td>
+          <td>Password</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="imgs/terminus-setup.png" alt="terminus-gateway" /></p>
+  </li>
+  <li>Click “Save”.</li>
+  <li>
+    <p>Create a second connection to the Pelican server using the following parameters:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>pelican</td>
+        </tr>
+        <tr>
+          <td>Group</td>
+          <td>cism</td>
+        </tr>
+        <tr>
+          <td>Host</td>
+          <td>pelican.cism.ucl.ac.be</td>
+        </tr>
+        <tr>
+          <td>Port</td>
+          <td>22 (already there)</td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><em>MY_LOGIN</em> (CISM)</td>
+        </tr>
+        <tr>
+          <td>Authentication</td>
+          <td>Password</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>In the “Advanced” tab, define the following parameters:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jump host</td>
+          <td>gateway</td>
+        </tr>
+        <tr>
+          <td>Agent forwarding</td>
+          <td>Activate the slider</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><img src="imgs/terminus-jump-host.png" alt="terminus-jump-host" /></p>
+  </li>
+  <li>Click “Save”.</li>
+</ol>
+
+<p>Now, the SSH connection (via the gateway) is set up and you can connect to the Pelican server. To do that:</p>
+
+<ol>
+  <li>Click on the “world” icon on the right side of the menu bar.</li>
+  <li>Select the “<strong>cism / pelican</strong>” connexion. <strong>Not</strong> the gateway.</li>
+  <li>Enter your CISM password two times, i.e. once for the gateway and once for the server itself.</li>
+</ol>
+
+<p><img src="imgs/terminus-open-connection.png" alt="terminus-connection" /></p>
+
+<hr />
+
+<h2 id="nextcloud">Nextcloud</h2>
+
+<p><a href="https://nextcloud.com/">Nextcloud</a> is an open-source file hosting service (similar to Dropbox, OneDrive,…) and is available on the Pelican server with your CISM login and password, here: <a href="https://nextcloud.cism.ucl.ac.be">https://nextcloud.cism.ucl.ac.be</a>. You can install a desktop client via the website of Nextcloud.</p>
+
+<p>During the practical sessions, Nextcloud can be used as a way to transfer files from your PC to the server and vice-versa. It will be used by Mac and Linux users. For those on Windows who are using MobaXterm, it is not a necessary step, as MobaXterm provides an integrated SFTP interface.</p>
+
+<p>To connect an external storage, i.e. your home folder on the Pelican server, follow these steps:</p>
+
+<ol>
+  <li>
+    <p>Go to the settings of Nextcloud via the web interface, i.e. click on the icon on the upper-right corner of the screen (with the first letter of your firstname) and choose “Settings”.</p>
+
+    <p><img src="imgs/nextcloud-interface.png" alt="nextcloud-interface" /></p>
+  </li>
+  <li>Choose “External storages” on the left panel.</li>
+  <li>
+    <p>Add a new external storage using the following settings:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Folder name</td>
+          <td>Pelican</td>
+        </tr>
+        <tr>
+          <td>Add storage</td>
+          <td>SFTP</td>
+        </tr>
+        <tr>
+          <td>Authentication</td>
+          <td>Username and password</td>
+        </tr>
+        <tr>
+          <td>Host</td>
+          <td>pelican.cism.ucl.ac.be</td>
+        </tr>
+        <tr>
+          <td>Root</td>
+          <td>/home/elic/<em>MY_LOGIN</em></td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><em>MY_LOGIN</em> (CISM)</td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><em>MY_PASSWORD</em> (CISM)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Click on the “v”. If the settings are correct, the icon on the left should be green.</p>
+
+    <p><img src="imgs/nextcloud-external-storage.png" alt="nextcloud-external-storage" /></p>
+  </li>
+  <li>Files on folders on the Pelican servers are now accessible in your folder structure in the home page of the Nextcloud web interface.</li>
+</ol>
+:ET

@@ -1,0 +1,105 @@
+I"�<!-- ---
+layout: default
+title: Session 3
+permalink: /tecto/session-3 -->
+<hr />
+
+<h1 id="session-3---geomorphologic-analyses">Session 3 - Geomorphologic analyses</h1>
+
+<h2 id="objectives-of-the-day">Objectives of the day</h2>
+
+<ol>
+  <li>Which topographic metrics are available in LSDTopoTools? ::: Read the LSDTopoTools documentation.</li>
+  <li>Which topographic metrics are available in QGIS? ::: Understand the concept of hypsometric curves.</li>
+  <li>Plan your work ::: Create a diagram using OneNote to provide details of your workflow.</li>
+  <li>What’s next ? ::: Explore and run LSDTopoTools, select rivers of interest and produce results.</li>
+</ol>
+
+<h2 id="important-note-">Important note !</h2>
+
+<p>Each time you connect to the server, you will need to load LSDTopoTools before running the first command. Simply type:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>load_LSDTopoTools
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="which-topographic-metrics-are-available-in-lsdtopotools">Which topographic metrics are available in LSDTopoTools?</h2>
+
+<p>Three modules of LSDTopoTools are useful for the analyses to achieve in the frame of the research project:</p>
+
+<ul>
+  <li>The basic analysis (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html">resources</a>): <code class="language-plaintext highlighter-rouge">lsdtt-basic-metrics</code></li>
+  <li>The channel extraction (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html">resources</a>): <code class="language-plaintext highlighter-rouge">lsdtt-channel-extraction</code>.</li>
+  <li>The Chi analysis (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html">resources</a>; <a href="https://esurf.copernicus.org/articles/6/505/2018/">related paper</a>): <code class="language-plaintext highlighter-rouge">lsdtt-chi-mapping</code>.</li>
+</ul>
+
+<p>The manual for each module contains a lot of information… Focus <em>mainly</em> on “Appendix A” of each manual, which contains the parameters that are available, their explanation, and their potential to fulfill your needs. Each module works with a parameters file that has the same structure than the one you used for the first analysis of your study area. You <em>only</em> need to add or remove parameters in the fill and run it with the proper command.</p>
+
+<h2 id="which-topographic-metrics-are-available-in-qgis-">Which topographic metrics are available in QGIS ?</h2>
+
+<p>QGIS will enable you to visualise outputs from LSDTopoTools but also to run other topographic analyses. One mandatory analysis for the research project is to compute hypsometric curves. However, any other relevant analysis is welcome ! Be imaginative…</p>
+
+<h3 id="hypsometric-curves">Hypsometric curves</h3>
+
+<p>Following Strahler (1952), the hypsometric curve relates horizontal cross-sectional area of a drainage basin to relative elevation above basin mouth. As both parameters (in x and y) are dimensionless, curves can be described and compared irrespective of basin size or shape. In other words, it describes the relative proportion of the watershed area that lies at or above a given height relative to the total relief of the watershed (Luo, 1998). Differences in the shape of the curve are related to the degree of disequilibrium in the balance of erosive and tectonic forces (Weissel and Pratson, 1994).</p>
+
+<p><img src="imgs/hypsometric-curves.png" alt="hypsometric-curves" /></p>
+
+<p><strong>References</strong></p>
+
+<ul>
+  <li>Luo, W. (1998). Hypsometric analysis with a geographic information system. <em>Computers &amp; Geosciences</em>, <em>24</em>(8), 815-821.</li>
+  <li>Strahler, A.N. (1952). Hypsometric (area-altitude) analysis of erosional topography. Geological Society of America Bulletin, 63, 1117-1142.</li>
+  <li>Weissel, J.K., Pratson, L.F. (1994). The length-scaling properties of topography. Journal of Geophysical Research, 99, 13997-14012.</li>
+</ul>
+
+<h3 id="to-compute-hypsometric-curves-in-qgis">To compute hypsometric curves in QGIS</h3>
+
+<p>In QGIS, use the <em>Hypsometric curves</em> toolbox available in the QGIS processing tools “Raster terrain analysis” (<u>not</u> “Hypsometry” from SAGA GIS).</p>
+
+<ol>
+  <li>Define the digital elevation model.</li>
+  <li>Define the “Boundary layer” parameter. It defines the limits of the river catchment of interest. It can be either a single polygon shapefile or a selected polygon in a multi-polygon shapefile. You can also loop on all the polygons of one given shapefile.</li>
+  <li>Importantly, define the “step” parameter. It defines the increment for the elevation, from the lowest to the highest point of the river catchment.</li>
+  <li>
+    <p>You can also consider to check the box “Use % of are instead of absolute value”, in order to have a relative hypsometric curve and to allow comparison between catchments.</p>
+
+    <p><img src="imgs/hypsometric-curves-qgis.png" alt="hypsometric-curves-qgis" /></p>
+  </li>
+</ol>
+
+<p>The output is a <code class="language-plaintext highlighter-rouge">csv</code> file, which contains the binned values for catchment area and elevation. You can use this table to plot hypsometric curves.</p>
+
+<h2 id="plan-your-work">Plan your work</h2>
+
+<p>Write down a work plan / workflow (diagram with annotations, drawing, short text,…) of analyses required to fulfill the project. This work plan should detail each milestone to achieve the project and how everything connects to the final goal.</p>
+
+<ul>
+  <li>What are the required outputs ?</li>
+  <li>Which analyses ? For which purpose ? In which sequence ?</li>
+  <li>Which parameters for which tool ? How to define them ?</li>
+  <li>Which analysis on which software (LSDTopoTools / QGIS / Excel / R) ?</li>
+  <li>Identify key references about concepts you do not understand well and include link / excerpts / figures / files.</li>
+  <li>Note the spatial extent of the analysis: points along the river, points along a transect, catchment, …</li>
+  <li>Note the use of each analysis/result, in the frame of your research question.</li>
+  <li>Note how you plan to combine/compare metrics to get additional knowledge.</li>
+  <li>The more detailed is the workflow, the easiest it will be to perform the analyses.</li>
+</ul>
+
+<p>Create your work plan in the related tab of your group channel on Microsoft Teams.</p>
+
+<blockquote>
+  <p>The tab “Workflow” is a OneNote notebook that can be edited simultaneously by each member of the channel. You can create several notes, draw sketches, includes post-its, files, images…</p>
+</blockquote>
+
+<p>Finalise the workflow on the OneNote tab of your group channel <strong>before Tuesday 17th of November at 18:00</strong>.</p>
+
+<h2 id="whats-next-">What’s next ?</h2>
+
+<ol>
+  <li>Hands-on ! ::: Explore and run the modules of LSDTopoTools on your study area.</li>
+  <li>Focus your analysis ::: Select rivers to be further analysed.</li>
+  <li>Get your final results ::: Tune parameters, create and process results.</li>
+</ol>
+:ET

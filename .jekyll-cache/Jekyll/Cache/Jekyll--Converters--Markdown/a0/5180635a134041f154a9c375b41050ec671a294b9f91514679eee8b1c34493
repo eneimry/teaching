@@ -1,0 +1,22 @@
+I"p<h2 id="mobaxterm-tips-and-hints">MobaXterm tips and hints</h2>
+
+<ul>
+  <li>When you download files from the server (<strong>do not “Drag and drop”</strong>):
+    <ol>
+      <li>Select them manually.</li>
+      <li>Right-click and select “Download”.</li>
+      <li>Choose a directory.</li>
+    </ol>
+  </li>
+  <li>To paste a copied text line, simply right-click in the terminal window, where you would write the text line.</li>
+  <li>To visualise or edit text files from the server:
+    <ol>
+      <li>In the file browser of MobaXterm software, double-click on the file. It will be opened in Notepad.</li>
+      <li>View and/or edit it.</li>
+      <li>Save the file and select “Yes” when the following screen appears. It will upload the modified file directly on the server.</li>
+    </ol>
+  </li>
+</ul>
+
+<p><img src="imgs/Save-file.png" alt="Save-files_image" /></p>
+:ET

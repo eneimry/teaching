@@ -1,0 +1,78 @@
+I"�<!-- ---
+layout: default
+title: Session 1
+permalink: /tecto/session-1
+--- -->
+
+<h1 id="session-1---introduction-and-dem-manipulation">Session 1 - Introduction and DEM manipulation</h1>
+
+<h2 id="objectives-of-the-day">Objectives of the day</h2>
+
+<ol>
+  <li>Clarify everything that is possible to clarify (and solve problems ?). <strong>Write questions in the chat of the TP channel on Teams</strong>.
+    <ul>
+      <li>CISM login / Access to the UCLouvain network in the coming days.</li>
+      <li>Workflow of the morphometric analysis for the Tros-Marets river.</li>
+    </ul>
+  </li>
+  <li>Download the <strong>filled</strong> DEM of your study area and create a project in QGIS. It is important that everybody manipulates the DEM and QGIS. Even if you do not like physical geography, learning QGIS is an important transversal skill to develop !
+    <ul>
+      <li>Projection: UTM 31 N (EPSG:32631). Make sure that both your data frame and all your outputs are in this projection.</li>
+      <li><a href="https://nextcloud.cism.ucl.ac.be/s/3JRTbXY6kqe9cyM">Link</a></li>
+    </ul>
+  </li>
+  <li>Qualitative morphometric analysis of the study area
+    <ul>
+      <li>Compute Hillshade and Slope as raster layers.</li>
+      <li>Highlight (map features in a shapefile) high slopes, discontinuities in the landscape, valley widening, river network
+pattern</li>
+      <li>Link your qualitative observations with the geological setting and literature</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="data">Data</h2>
+
+<p>DEM data to use locally, i.e. in QGIS: <a href="https://nextcloud.cism.ucl.ac.be/s/3JRTbXY6kqe9cyM">Link</a></p>
+
+<h2 id="qualitative-analysis">Qualitative analysis</h2>
+
+<h3 id="set-dem-symbology">Set DEM symbology</h3>
+
+<p>To properly render a DEM in a GIS, the idea is to ask QGIS to render values only on the currently visible range of pixel values. To do so:</p>
+
+<ol>
+  <li>Open the properties of the layer.</li>
+  <li>Open the “Symbology” tab.</li>
+  <li>In the “Min/Max Value Settings” section, define “Statistics Extent” as “Updated canvas” in the dropdown menu.
+ <img src="imgs/qgis-stretch-values.png" alt="raster-rendering" /></li>
+  <li>Zoom in on small portions of the DEM. You will see that the colour of the pixels will adapt to the range of the visible elevation.</li>
+</ol>
+
+<h3 id="slope-and-hillshade">Slope and hillshade</h3>
+
+<p>Computing hillshade and slope will help you to get a better visualisation of the topography. Both toolboxes are available in the menu “Raster &gt; Analysis”.</p>
+
+<p>The typical purpose of the hillshade it to create a 3D impression of your DEM. To do that, the hillshade should be superimposed to the DEM with a given transparency. To set the transparency, choose the tab “Transparency” in the layer properties.</p>
+
+<h3 id="transversal-profiles">Transversal profiles</h3>
+
+<p>Draw transversal profiles to capture the global topography of the area, using the plugin “Profile tool” (see additional resources). Export the output into a text file and process it in Excel or R.</p>
+
+<h3 id="analysis-of-the-dem">Analysis of the DEM</h3>
+
+<p>If it helps, first compute the river network. The DEM that you downloaded is <strong>already filled</strong>.</p>
+
+<p>Using the hillshaded DEM, you can do the following steps just by visual inspection :</p>
+
+<ul>
+  <li>characterise the drainage river pattern (dentritic, parallel, rectangular), and changes</li>
+  <li>highlight discontinuities in the drainage pattern, meandering behaviour, …</li>
+  <li>identify ridges, depressions, discontinuities in the topography</li>
+  <li>map human infrastructures that divert the course of the rivers.</li>
+</ul>
+
+<h3 id="confront-your-observations-with-literature--geological-setting">Confront your observations with literature / geological setting</h3>
+:ET
