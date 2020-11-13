@@ -28,6 +28,6 @@ permalink: /
   <div class="card-body">
     <h5 class="card-title">LGEO2240 - Tectonic Geomorphology</h5>
     <p class="card-text">Technical resources to perform a morphometric analysis based on a DEM using LSDTopoTools.</p>
-    <a href="/teaching/docs/tecto/index.html" class="btn btn-primary">More info...</a>
+    <a href="/teaching/tecto/index.html" class="btn btn-primary">More info...</a>
   </div>
 </div>
