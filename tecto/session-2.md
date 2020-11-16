@@ -419,6 +419,8 @@ parameter_name: parameter_value
 
 ## Get the DEM of your study area
 
+**IMPORTANT:** From now, all parameters in UPPERCASE need to be adjusted according to your study area / login / directory structure...
+
 The DEM of your study are is stored as an archive file `.zip` in the `/storepelican/fclapuyt/LGEO2240-DEM/` directory.
 
 ![storepelican-dem](imgs/storepelican-dem.png)
@@ -464,8 +466,8 @@ rm -f NAME_OF_STUDY_AREA.zip
     # Documentation can be found at: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html
 
     # These are parameters for the file i/o
-    read fname: dem-ambleve-10m
-    write fname: dem-ambleve-10m
+    read fname: NAME_OF_INPUT_DEM_FILE_WITHOUT_EXTENSION
+    write fname: PREFIX_FOR_OUTPUTS_FILE
     channel heads fname: NULL
 
     # Parameters for surface metrics
@@ -504,7 +506,7 @@ rm -f NAME_OF_STUDY_AREA.zip
 The LSDMappingTools module enables to visualise data without downloading the data on your local drive and open them in QGIS. Once  you have created your outputs, you can plot the DEM with the superimposed basins with the `PlotBasicRaster.py` tool:
 
 ```bash
-python ~/lsdtt/LSDMappingTools/PlotBasicRasters.py -dir ./ -fname dem-ambleve-10m -drape_fname dem-ambleve-10m -PD True -PB True -dpi 300
+python ~/lsdtt/LSDMappingTools/PlotBasicRasters.py -dir ./ -fname PREFIX_OF_OUTPUTS_FILE -drape_fname PREFIX_OF_OUTPUTS_FILE -PD True -PB True -dpi 300
 ```
 
 Outputs of LSDMappingTools are created in a new directory `raster_plots` that is created in the `dem-analysis` directory. To visualise them:
@@ -513,7 +515,7 @@ Outputs of LSDMappingTools are created in a new directory `raster_plots` that is
 # List files in the raster_plots directory
 ls raster_plots
 # Display the output you want...
-display raster_plots/dem-ambleve-10m_basins_selected_basins.png
+display raster_plots/PREFIX_OF_OUTPUTS_FILE_basins_selected_basins.png
 ```
 
 ## Manage outputs of successive analyses
