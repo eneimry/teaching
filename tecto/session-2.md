@@ -213,14 +213,14 @@ The [LSDMappingTools](https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_v
 
 To install it, execute the following sequence of commands:
 
-    ```bash
-    # Enter lsdtt directory
-    cd
-    cd lsdtt
+```bash
+# Enter lsdtt directory
+cd
+cd lsdtt
 
-    # Clone LSDMappingTools Github repository
-    git clone https://github.com/LSDtopotools/LSDMappingTools.git
-    ```   
+# Clone LSDMappingTools Github repository
+git clone https://github.com/LSDtopotools/LSDMappingTools.git
+```   
 
 ### Add LSDTT variables to PATH
 
