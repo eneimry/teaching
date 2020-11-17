@@ -466,8 +466,10 @@ rm -f NAME_OF_STUDY_AREA.zip
     # Documentation can be found at: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html
 
     # These are parameters for the file i/o
+    # read fname and write fname should be the same, if you want to visualise your outputs
+    # using LSDMappingTools...
     read fname: NAME_OF_INPUT_DEM_FILE_WITHOUT_EXTENSION
-    write fname: PREFIX_FOR_OUTPUTS_FILE
+    write fname: NAME_OF_INPUT_DEM_FILE_WITHOUT_EXTENSION
     channel heads fname: NULL
 
     # Parameters for surface metrics
