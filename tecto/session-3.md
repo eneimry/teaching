@@ -5,12 +5,6 @@ parent: Tectonic Geomorphology
 nav_order: 4
 ---
 
-<!-- ---
-layout: default
-title: Session 3
-permalink: /tecto/session-3 -->
----
-
 # Session 3 - Geomorphologic analyses
 
 ## Objectives of the day

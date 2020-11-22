@@ -5,12 +5,6 @@ parent: Tectonic Geomorphology
 nav_order: 1
 ---
 
-<!-- ---
-layout: default
-title: Technical considerations
-permalink: /tecto/technical-considerations
---- -->
-
 # Technical considerations
 
 In order to perform efficient topographic analyses, we will use the LSDTopoTools software. Its use will require a small learning curve, but you will quickly see its benefits. If not, try to perform the same analysis over such large areas manually in ArcGIS or QGIS, as efficiently as in command line via the terminal using the LSDTopoTools software on a **server**...

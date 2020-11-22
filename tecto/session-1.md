@@ -5,12 +5,6 @@ parent: Tectonic Geomorphology
 nav_order: 2
 ---
 
-<!-- ---
-layout: default
-title: Session 1
-permalink: /tecto/session-1
---- -->
-
 # Session 1 - Introduction and DEM manipulation
 
 ## Objectives of the day

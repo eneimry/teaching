@@ -5,12 +5,6 @@ nav_order: 1
 has_children: true
 ---
 
-<!-- ---
-layout: default
-title: LGEO2240
-permalink: /tecto/index
---- -->
-
 # LGEO2240 - Tectonic Geomorphology
 
 ## Introduction

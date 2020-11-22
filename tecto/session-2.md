@@ -5,12 +5,6 @@ parent: Tectonic Geomorphology
 nav_order: 3
 ---
 
-<!-- ---
-layout: default
-title: Session 2
-permalink: /tecto/session-2
---- -->
-
 # Session 2 - Intro to shell and LSDTopoTools
 
 ## Objectives of the day
@@ -220,7 +214,7 @@ cd lsdtt
 
 # Clone LSDMappingTools Github repository
 git clone https://github.com/LSDtopotools/LSDMappingTools.git
-```   
+```
 
 ### Add LSDTT variables to PATH
 
