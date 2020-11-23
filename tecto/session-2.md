@@ -497,6 +497,8 @@ rm -f NAME_OF_STUDY_AREA.zip
 
 4. It will take some time to run. But you will quickly see that it runs very fast in comparison to QGIS given the amount of pixels to process and outputs created. Six outputs are created (!): slope, aspect, curvature and tangential curvature, hillshade and catchments. From here, you will begin to understand that learning all the shell / server / LSDTopoTools stuff could really worth it... :-)
 
+>  For easier use with LSDMappingTools, you should use the input DEM name as `write fname` parameter. Oh
+
 ## Data visualisation on the server
 
 The LSDMappingTools module enables to visualise data without downloading the data on your local drive and open them in QGIS. Once  you have created your outputs, you can plot the DEM with the superimposed basins with the `PlotBasicRaster.py` tool:
@@ -552,7 +554,6 @@ There is no GUI for file transfer in Terminus. Instead, you have two possibiliti
 
     ```bash
     scp -r -oProxyCommand="ssh -W %h:%p MY_LOGIN@gwcism.cism.ucl.ac.be" MY_LOGIN@pelican.cism.ucl.ac.be:PATH_TO_FOLDER_ON_THE_SERVER/* PATH_TO_FOLDER_ON_LOCAL_MACHINE
-    ``
     ```
 
 ![terminus-local-terminal](imgs/terminus-local-terminal.png)

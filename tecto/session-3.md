@@ -14,7 +14,7 @@ nav_order: 4
 3. Plan your work ::: Create a diagram using OneNote to provide details of your workflow.
 4. What's next ? ::: Explore and run LSDTopoTools, select rivers of interest and produce results.
 
-## Important note !
+## Important note
 
 Each time you connect to the server, you will need to load LSDTopoTools before running the first command. Simply type:
 
@@ -24,7 +24,7 @@ load_LSDTopoTools
 
 -----
 
-## Which topographic metrics are available in LSDTopoTools?
+## Which topographic metrics are available in LSDTopoTools ?
 
 Three modules of LSDTopoTools are useful for the analyses to achieve in the frame of the research project:
 
