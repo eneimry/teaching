@@ -497,7 +497,7 @@ rm -f NAME_OF_STUDY_AREA.zip
 
 4. It will take some time to run. But you will quickly see that it runs very fast in comparison to QGIS given the amount of pixels to process and outputs created. Six outputs are created (!): slope, aspect, curvature and tangential curvature, hillshade and catchments. From here, you will begin to understand that learning all the shell / server / LSDTopoTools stuff could really worth it... :-)
 
->  For easier use with LSDMappingTools, you should use the input DEM name as `write fname` parameter. Oh
+>  For easier use with LSDMappingTools, you should use the input DEM name as `write fname` parameter, i.e. `read fname` and `write fname` should have the same value.
 
 ## Data visualisation on the server
 

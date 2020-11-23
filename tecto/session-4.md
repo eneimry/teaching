@@ -93,7 +93,7 @@ print_junctions_to_csv: true
 
 ### First Chi analysis and metrics for river points
 
-Now that you have properly delineated the river network and associated catchments in your study area, the question is: which rivers will be selected for an in-depth analysis, i.e. transversal profiles, hypsometric curves... Of course, if you are very comfortable with automated geo-processing in QGIS, R or Python, you could perform the analysis on the entire set of delineated river catchments. However, developing advanced automated workflow for geoprocessing is out of scope in this research project... Therefore, you need to find a way to select catchments other than randomly. To do that, one method is to compute a basic version of the Chi value for every single point of the river network of the study area using the `lsdtt-basic-metric` module with the following parameter:
+Now that you have properly delineated the river network and associated catchments in your study area, the question is: which rivers will be selected for an in-depth analysis, i.e. transversal profiles, hypsometric curves... Of course, if you are very comfortable with automated geo-processing in QGIS, R or Python, you could perform the analysis on the entire set of delineated river catchments. However, developing advanced automated workflow for geoprocessing is out of scope in this research project... Therefore, you need to find a way to select catchments other than randomly. To do that, one method is to compute a basic version of the Chi value for every single point of the river network of the study area using the `lsdtt-basic-metrics` module with the following parameter:
 
 ```bash
 print_chi_data_maps: true
@@ -103,7 +103,7 @@ You will end up with a `.csv` table that contains several useful information to 
 
 ![chi-basic](imgs/xian-rivers-chi-basic.png)
 
-Processing this table in Excel/R will enable you to produce longitudinal profiles along with Chi plots for the entire study. WIth that, you will be able to highlight rivers that are in equilibrium or not, patterns in rivers, groups of rivers... Example from [Perron and Royden (2013)](http://web.mit.edu/perron/www/files/PerronRoyden13.pdf):
+Processing this table in Excel/R will enable you to produce longitudinal profiles along with Chi plots for the entire study. With that, you will be able to highlight rivers that are in equilibrium or not, patterns in rivers, groups of rivers... Example from [Perron and Royden (2013)](http://web.mit.edu/perron/www/files/PerronRoyden13.pdf):
 
 ![Perron-Royden-2013](imgs/perron-royden-2013.png)
 
