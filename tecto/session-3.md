@@ -64,9 +64,9 @@ In QGIS, use the *Hypsometric curves* toolbox available in the QGIS processing t
 The output is a ``csv `` file, which contains the binned values for relative **downslope** catchment area and **absolute** elevation. You will therefore need to post-process the values to plot correct hypsometric curves.
 
 - Relative height is computed by normalising height over its range, i.e. 
-  $$
+  \begin{equation}
   (z - z_{min}) / (z_{max} - z_{min})
-  $$
+  \end{equation}
 
 - Relative **upslope** area is computed as follows:
   $$
