@@ -79,7 +79,7 @@ Visually, you should end up with something like:
 
 ![hypso-example](imgs/hypso_example.png)
 
-Here is the example file: [link](files/hypsometric-curves.ods) (right-click > save link as)
+Here is the example file: [link](files/hypsometric-curves.ods)
 
 ## Plan your work
 
