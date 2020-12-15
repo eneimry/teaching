@@ -10,24 +10,39 @@ nav_order: 1
 ## Good practices
 
 - Always save the outputs of toolboxes on the disk of your machine. Do **not** use temporary files.
-- Always work with layers which have **the same projection**. QGIS efficiently deals with the EPSG codes, i.e. 4-5 digit numbers that represent coordinate reference system definitions. Also make sure that the data frame has the same projection than layers. EPSG codes are listed on the [epsg.io](https://epsg.io/) or [spatialreference.org](https://spatialreference.org/ref/epsg/) websites. For instance, the WGS84 is EPSG:4326, the Lambert 72 is EPSG:31370, and the UTM 31N is EPSG:32631. As in ArGIS, the data frame peojection is defined by the projection of the first layer imported in the project.
+- Always work with layers which have **the same projection**. QGIS efficiently deals with the EPSG codes, i.e. 4-5 digit numbers that represent coordinate reference system definitions. Also make sure that the data frame has the same projection than layers. EPSG codes are listed on the [epsg.io](https://epsg.io/) or [spatialreference.org](https://spatialreference.org/ref/epsg/) websites. As in ArcGIS, the data frame projection is defined by the projection of the first layer imported in the project.
   - To reproject a shapefile: "Menu Vector > Data Management Tools > Reproject Layer".
   - To reproject a raster: "Menu Raster > Projections > Warp (Reproject)".
   - To define the data frame coordinate reference system: "Menu Project > Properties" > Tab "CRS".
 - Avoid spaces and special characters in filenames.
 - Use `.shp` for vector data and `.tif` for raster data. For raster data, it might also be `.sgrd` or `.sdat`, depending on the toolboxes that you run.
 
-## Layer not rendering properly
+Some common coordinate system EPSG identifiers: 
+
+| Coordinate system                                            | EPSG ID |
+| ------------------------------------------------------------ | ------- |
+| WGS 84                                                       | 4326    |
+| WGS 84 - Pseudo-Mercator (Google / OSM WMS data)             | 3857    |
+| Belgian Lambert 72                                           | 31370   |
+| Belgian Lambert 2008                                         | 3812    |
+| UTM 31 N (covers Belgium)                                    | 32631   |
+| UTM 32 N (covers the most eastern part of Belgium, i.e. High Fens and Cantons de l'Est) | 32632   |
+
+## DEM symbology / DEM not rendering properly
 
 Single-band raster datasets are usually rendered using a color ramp from black to white. In practice, it means that the range of values contained in the datasets is stretched over the black to white gradient. If the distribution of these values is not relatively constant over the entire range, e.g. the majority of values is less than 1000 while only a few pixels have very large values (e.g. > 10^6), the GIS will render a completely black layer. This might be caused by a mis-interpretation of no data values in digital elevation models. It is also typical for flow accumulation data (few large values in rivers while majority of hillslopes have low values).
 
 To properly render such raster datasets, the idea is to ask QGIS to render values only on the currently visible range of pixel values. To do so:
 
 1. Open the properties of the layer.
+
 2. Open the "Symbology" tab.
+
 3. In the "Min/Max Value Settings" section, define "Statistics Extent" as "Updated canvas" in the dropdown menu.
 
-![raster-rendering](imgs/qgis-stretch-values.png)
+   ![raster-rendering](imgs/qgis-stretch-values.png)
+
+4. Zoom in on small portions of the DEM. You will see that the colour of the pixels will adapt to the range of the visible elevation.
 
 ## Processing toolboxes
 
@@ -81,21 +96,7 @@ In practice, in QGIS, for the IGN cartoweb layer:
 1. Open the DEM in QGIS.
 2. Select the tool "Clip Raster by Extent" in the menu "Raster > Extraction".
 3. Fill the toolbox. You can either define the extent interactively by drawing a rectangle in the dataframe or use a shapefile.
-4. Export the result in the **.bil format**.
-
-## Use Profile tool
-
-1. In the table of contents of QGIS, select the DEM layer.
-2. Open "Profile tool " via the menu "Plugins".
-3. Click on the button "Add Layer", to define the DEM from which you will extract elevation.
-4. In the "Options" panel, define "Selection" as "Temporary polyline".
-5. Interactively draw a line on the DEM to define the extent of the topographic profile. You can also use polyline shapefiles.
-    ![Profile-tool_image](imgs/Profile-tool.png)
-6. Once the profile is ok, open the "Table" tab.
-7. Click on "Copy to clipboard (with coordinates)".
-8. Open Excel and paste the profile.
-9. Headers of columns are: "Distance" / "Longitude" / "Latitude" / "Elevation".
-10. You can now plot the profile directly within Excel, and eventually save the table.
+4. Export the result in the **.bil** format if to be used as an input of LSDTopoTools or as a **.tif** in other cases.
 
 ## Add text-delimited layers
 

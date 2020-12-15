@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Technical considerations
+title: Servers and SSH clients
 parent: Tectonic Geomorphology
 nav_order: 1
 ---
@@ -32,7 +32,7 @@ SSH clients are softwares which enable the user to connect to the server using t
 
 ## CISM account
 
-In order to connect to the server, a CISM account is required. To create one, you first need to be connected to the UCLouvain network, i.e. via the wireless network, a computer in a didactic room or via [UDS](https://uds.siws.ucl.ac.be/login/) (in this case, use Firefox and not Chrome).  
+In order to connect to the server, a CISM account is required. To create one, you first need to be **connected to the UCLouvain network**, i.e. via the wireless network, a computer in a didactic room or via [UDS](https://uds.siws.ucl.ac.be/login/) (in this case, use Firefox and not Chrome as a browser).  
 
 1. Visit the following web adress: [https://www.cism.ucl.ac.be/cilog](https://www.cism.ucl.ac.be/cilog)
 2. Submit your **@student.uclouvain.be** email adress via the form.
