@@ -249,7 +249,7 @@ Processing this table in Excel/R will enable you to produce longitudinal profile
 
 ----
 
-# Session 4 - Advanced analyses
+# Session 4 - Compute results
 
 Expected outputs for further discussion are: 
 
