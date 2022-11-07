@@ -1,0 +1,302 @@
+<h1 id="the-lsdtopotools-software">The LSDTopoTools software</h1>
+
+<p>The LSDTopoTools software was developed by members of the Land Surface Dynamics (LSD) research group at the University of Edinburgh (<a href="https://lsdtopotools.github.io/">home page</a>).</p>
+
+<p>The software aims to operate:</p>
+
+<ul>
+  <li>As a framework for implementing the latest developments in topographic analysis.</li>
+  <li>As a framework for developing new topographic analysis techniques.</li>
+  <li>As a framework for numerical modelling of landscapes.</li>
+  <li>To improve the speed and performance of topographic analysis versus other tools (e.g., commercial GIS software).</li>
+  <li>To enable <strong>reproducible</strong> topographic analysis in the research context.</li>
+</ul>
+
+<p>This software is constantly used for research and is regularly updated with new routines. Some popular techniques already implemented include:</p>
+
+<ul>
+  <li><a href="https://github.com/LSDtopotools/LSDTopoTools_AnalysisDriver">Basic topographic analysis</a></li>
+  <li><a href="https://github.com/LSDtopotools/LSDTopoTools_ChannelExtraction">Channel network extraction from LiDAR data</a></li>
+  <li><a href="https://github.com/LSDtopotools/LSDTopoTools_ChiMudd2014">Chi analysis</a></li>
+  <li><a href="https://github.com/LSDtopotools/LSDTopoTools_CRNBasinwide">Calculation of erosion rates from cosmogenic nuclides</a></li>
+  <li><a href="https://github.com/LSDtopotools/LSDTT_Hillslope_Analysis">Hilltop flow routing, and hillslope relief metrics</a></li>
+  <li><a href="https://github.com/LSDtopotools/LSDTopoTools_FloodplainTerraceExtraction">Topographic extraction of floodplains and terraces</a></li>
+</ul>
+
+<h2 id="installation-of-lsdtopotools">Installation of LSDTopoTools</h2>
+
+<p>Using your SSH client, connect to the Pelican server.</p>
+
+<ol>
+  <li>
+    <p>Load the required modules:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> module purge
+ module load 2019b
+ module load ELIC_Python
+ module load CMake/.3.15.3-GCCcore-8.3.0
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Return to (make sure your are in the) <code class="highlighter-rouge">HOME</code> directory:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create <code class="highlighter-rouge">lsdtt</code> directory and enter it:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">mkdir </span>lsdtt
+ <span class="nb">cd </span>lsdtt
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Clone the Github repository:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://github.com/LSDtopotools/LSDTopoTools2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Go to <code class="highlighter-rouge">src</code> directory:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd </span>LSDTopoTools2/src
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Open the <code class="highlighter-rouge">build.sh</code> file:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> vim build.sh
+</code></pre></div>    </div>
+  </li>
+  <li>Hit <code class="highlighter-rouge">i</code> on your keyboard to insert text.</li>
+  <li>Move within the file content using arrows of your keyboard to place the cursor at the beginning of the file.</li>
+  <li>
+    <p>Add the following line at the <strong>beginning</strong> (first line) of file.  In vim editor, use <code class="highlighter-rouge">Ctrl-Shift-V</code> to paste some text (to copy, use <code class="highlighter-rouge">Ctrl-Shift-C</code>.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">PREFIX</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span><span class="s2">/.."</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Hit <code class="highlighter-rouge">Esc</code> on your keyboard to exit the <em>insert</em> mode.</li>
+  <li>Type <code class="highlighter-rouge">:wq</code> to <em>write</em> and <em>quit</em> the text editor.</li>
+  <li>
+    <p>Compile the driver files:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh build.sh
+</code></pre></div>    </div>
+    <p>It will take some time…</p>
+  </li>
+</ol>
+
+<h2 id="installation-of-lsdmappingtools">Installation of LSDMappingTools</h2>
+
+<p>The <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_visualisation.html">LSDMappingTools</a> module is a LSDTopoTools component to map outputs using automatic procedures. It will be useful to produce intermediate data visualisation to check results directly on the server.</p>
+
+<p>To install it, execute the following sequence of commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Enter lsdtt directory</span>
+<span class="nb">cd
+cd </span>lsdtt
+
+<span class="c"># Clone LSDMappingTools Github repository</span>
+git clone https://github.com/LSDtopotools/LSDMappingTools.git
+</code></pre></div></div>
+
+<h2 id="add-lsdtt-variables-to-path">Add LSDTT variables to PATH</h2>
+
+<ol>
+  <li>
+    <p>Open the <code class="highlighter-rouge">.bashrc</code> file in your <code class="highlighter-rouge">HOME</code> directory using the <code class="highlighter-rouge">vim</code> command.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd
+ </span>vim .bashrc
+</code></pre></div>    </div>
+  </li>
+  <li>Hit <code class="highlighter-rouge">i</code> on your keyboard to insert text.</li>
+  <li>Move within the file content using arrows of your keyboard to place the cursor at the end of the file. <strong>Note</strong>: The file might be empty. It is a configuration file to set up your environment at the beginning of each session. Its content depends on the server raw setup.</li>
+  <li>
+    <p>Add the following lines at the end of file. Use <code class="highlighter-rouge">Ctrl-Shift-V</code> to paste some text (to copy, use <code class="highlighter-rouge">Ctrl-Shift-C</code>).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> load_LSDTopoTools<span class="o">()</span>
+ <span class="o">{</span>
+   module purge
+   module load 2019b
+   module load ELIC_Python
+   <span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/lsdtt/LSDTopoTools2/bin:<span class="k">${</span><span class="nv">PATH</span><span class="k">}</span>
+   <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/lsdtt/LSDMappingTools:<span class="k">${</span><span class="nv">PYTHONPATH</span><span class="k">}</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Hit <code class="highlighter-rouge">Esc</code> on your keyboard to exit the <em>insert</em> mode.</li>
+  <li>Type <code class="highlighter-rouge">:wq</code> to <em>write</em> and <em>quit</em> the text editor.</li>
+  <li>
+    <p>Reload the <code class="highlighter-rouge">.bashrc</code> file.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">source</span> .bashrc
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="get-the-example-data">Get the example data</h2>
+
+<ol>
+  <li>
+    <p>To download the example data, execute the following lines. Return to <code class="highlighter-rouge">HOME</code> directory and enter the <code class="highlighter-rouge">lsdtt</code> directory:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd
+ cd </span>lsdtt
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create the <code class="highlighter-rouge">data</code> directory:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">mkdir </span>data
+ <span class="nb">cd </span>data
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Download data from Github repository, unzip and remove archive file:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> wget https://github.com/LSDtopotools/ExampleTopoDatasets/archive/master.zip
+ unzip master.zip
+ <span class="nb">mv</span> ./ExampleTopoDatasets-master ./ExampleTopoDatasets
+ <span class="nb">rm </span>master.zip
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>When removing a file or a directory, the terminal will prompt you whether you really want to remove it:</p>
+
+    <p><img src="imgs/terminal-rm.png" alt="terminal-rm" /></p>
+  </li>
+  <li>
+    <p>Type <code class="highlighter-rouge">y</code> to confirm (yes) or <code class="highlighter-rouge">n</code> to abort (no).</p>
+  </li>
+</ol>
+
+<h2 id="directory-structure">Directory structure</h2>
+
+<p>After installing the software and getting the example data, you should end up with the following directory structure (this is not the output of a specific command):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--| lsdtt
+------| data
+----------| subdirectories with different projects
+------| LSDMappingTools
+----------| subdirectories with source code and programs
+------| LSDTopoTools2
+----------| subdirectories with source code and programs
+</span></code></pre></div></div>
+
+<h1 id="basic-example-using-lsdtt">Basic example using LSDTT</h1>
+
+<p>Before running your own analyses, it is important to make sure that the program is properly installed and set up on the server. Let’s begin by running LSDTT with the provided example data. More information about the basic usage of LSDTT is available <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html">here</a>.</p>
+
+<ol>
+  <li>
+    <p>At the beginning of each new session on the server, you should load the LSDTT <em>environment</em>, i.e. load modules and add LSDTT to PATH. To to that, simply (because the function is stored in your <code class="highlighter-rouge">.bashrc</code> file, see “Add LSDTT variables to PATH”) type:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> load_LSDTopoTools
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Navigate to the directory containing the example data:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd
+ cd </span>lsdtt/data/ExampleTopoDatasets/BasicMetricsData
+</code></pre></div>    </div>
+  </li>
+  <li>If you have correctly installed <code class="highlighter-rouge">LSDTopoTools</code>, you should be able to simply call <code class="highlighter-rouge">lsdtt-basic-metrics</code> command:
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> lsdtt-basic-metrics WA_BasicMetrics02.driver
+</span></code></pre></div>    </div>
+  </li>
+  <li>Press “Enter” and wait… The larger the area and/or the finer the resolution, the longer it will last… However, some messages are printed in the terminal. Read them, especially if the tool crashes !</li>
+</ol>
+
+<h1 id="how-does-lsdtt-work-">How does LSDTT work ?</h1>
+
+<p><strong>Note</strong>: This section provides additional information about how LSDTT works. There is no need to run the commands or modify parameters files.</p>
+
+<p>Starting from the basic example here above (all details <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html">here</a>), the typical command of LSDTopoTools is composed of two parts:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsdtt-basic-metrics WA_BasicMetrics02.driver
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">lsddtt-basic-metrics</code> is the name of the module of LSDTopoTools that you ask to run.</li>
+  <li><code class="highlighter-rouge">WA_BasicMetrics02.driver</code> is the name of the file containing the input parameters used by the module. The extension of the file is <code class="highlighter-rouge">.driver</code>.</li>
+</ul>
+
+<p>Without any other parameters, you need to run the command in the directory that contains the parameters file.</p>
+
+<p>Open the <code class="highlighter-rouge">WA_BasicMetrics02.driver</code> file using the following commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Make sure you are in the proper directory. If not, execute the commented line below.</span>
+<span class="c"># cd lsdtt/data/ExampleTopoDatasets/BasicMetricsData</span>
+<span class="c"># Open the file</span>
+vim WA_BasicMetrics02.driver
+</code></pre></div></div>
+
+<p>The content of the <code class="highlighter-rouge">WA_BasicMetrics02.driver</code> file is the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Parameters for extracting simple surface metrics</span>
+<span class="c"># Comments are preceeded by the hash symbol</span>
+<span class="c"># Documentation can be found at: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html</span>
+
+<span class="c"># These are parameters for the file i/o</span>
+<span class="nb">read </span>fname: WA
+write fname: WA_SecondExample
+channel heads fname: NULL
+
+<span class="c"># Parameters for surface metrics</span>
+surface_fitting_radius: 11
+print_slope: <span class="nb">true
+</span>print_aspect: <span class="nb">true
+</span>print_curvature: <span class="nb">true
+</span>print_tangential_curvature: <span class="nb">true</span>
+
+</code></pre></div></div>
+
+<p>In this example with such parameters, it is assumed that:</p>
+
+<ul>
+  <li>Lines beginning with the <code class="highlighter-rouge">#</code> symbol are comments. They will not be taken into account by the software.</li>
+  <li>Input DEM and parameters file should be located in the directory in which you run the command.</li>
+  <li>Outputs will be created in the same current directory.</li>
+  <li><code class="highlighter-rouge">WA</code> is the name of the DEM, without the <code class="highlighter-rouge">.bil</code> extension.</li>
+  <li>The outputs will have a prefix as <code class="highlighter-rouge">WA_SecondExample</code>.</li>
+  <li>Four outputs are created, using a given surface fitting radius: slope, aspect, curvature and tangential curvature.</li>
+</ul>
+
+<p>Parameters documentation can be found <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html#_analysis_options_for_the_lsdtt_basic_metrics_program">here</a>.</p>
+
+<h2 id="parameters-file">Parameters file</h2>
+
+<p>Parameters files are named as follows: <code class="highlighter-rouge">MyParametersFile.driver</code>. They always have the same structure. These files can be created or modified using e.g. Notepad or directly via the terminal using <code class="highlighter-rouge">vim</code>. In Notepad, save them as txt files but write the <code class="highlighter-rouge">.driver</code> extension in the filename.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># These are parameters for the file i/o</span>
+<span class="c"># IMPORTANT: You MUST make the write directory: the code will not work if it doesn't exist.</span>
+<span class="nb">read </span>fname: mnt-vesdre
+write fname: mnt-vesdre
+channel heads fname: NULL
+
+<span class="c"># Definition of the parameters to run a given script</span>
+parameter_name: parameter_value
+...
+...
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">read fname</code> and <code class="highlighter-rouge">write fname</code> are usually the same. They define the prefix for inputs and outputs, i.e. the name of the input DEM, without the file extension.</li>
+  <li>Inputs and outputs are stored in the same directory. This is required for data visualisation with LSDMappingTools.</li>
+  <li>The parameters file should be located in the same directory as the inputs.</li>
+</ul>
+
+<h1 id="which-topographic-metrics-are-available-in-lsdtopotools-">Which topographic metrics are available in LSDTopoTools ?</h1>
+
+<p>Three modules of LSDTopoTools are useful for the analyses to achieve in the frame of the research project:</p>
+
+<ul>
+  <li>The basic analysis (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html">resources</a>): <code class="highlighter-rouge">lsdtt-basic-metrics</code></li>
+  <li>The channel extraction (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html">resources</a>): <code class="highlighter-rouge">lsdtt-channel-extraction</code>.</li>
+  <li>The Chi analysis (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html">resources</a>; <a href="https://esurf.copernicus.org/articles/6/505/2018/">related paper</a>): <code class="highlighter-rouge">lsdtt-chi-mapping</code>.</li>
+</ul>
+
+<p>The manual for each module contains a lot of information… Focus <em>mainly</em> on “Appendix A” of each manual, which contains the parameters that are available, their explanation, and their potential to fulfill your needs. Each module works with a parameters file that has the same structure than the one you used for the first analysis of your study area. You <em>only</em> need to add or remove parameters in the fill and run it with the proper command.</p>

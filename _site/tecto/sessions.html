@@ -1,0 +1,322 @@
+<h1 id="important-note">Important note</h1>
+
+<p>Each time you connect to the server, you will need to load LSDTopoTools before running the first command. Simply type:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>load_LSDTopoTools
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="session-12---basic-analyses">Session 1/2 - Basic analyses</h1>
+
+<h2 id="objectives">Objectives</h2>
+
+<ol>
+  <li>Communicate with the server ::: Learn the basics of the shell usage.</li>
+  <li>Have a working infrastructure ::: Install LSDTopoTools.</li>
+  <li>Learn the logic of LSDTopoTools ::: Run an basic analysis on example data.</li>
+  <li>Compute first outputs for your study area ::: Create a proper parameter file that suits your needs.</li>
+  <li>Display your results in a GIS ::: Download LSDTT outputs and explore them in QGIS.</li>
+  <li>Qualitatively analyse your study area :::  Create a hillshaded DEM and inspect your study area.</li>
+  <li>Which topographic metrics are available in LSDTopoTools? ::: Read the LSDTopoTools documentation.</li>
+  <li>Which topographic metrics are available in QGIS? ::: Understand the concept of hypsometric curves.</li>
+  <li>Plan your work ::: Create a diagram to provide details of your workflow.</li>
+</ol>
+
+<h2 id="workflow">Workflow</h2>
+
+<h3 id="technical-setup">Technical setup</h3>
+
+<ol>
+  <li>Set up your access to the server using a SSH client. [<a href="intro-server-and-ssh.md">resource</a>]</li>
+  <li>Learn basic shell commands <a href="intro-shell.md">here</a>.</li>
+  <li>Install LSDTopoTools and LSDMappingTools. [<a href="lsdtt-intro.md">resource</a>]</li>
+  <li>Run the example topographic analysis to check whether everything is properly working, and understand the logic behind LSDTopoTools, i.e. parameters files and directory structure. [<a href="lsdtt-intro.md">resource</a>]</li>
+</ol>
+
+<h3 id="first-topographic-analysis">First topographic analysis</h3>
+
+<p>Run your first topographic analysis of your study area using LSDTopoTools [<a href="lsdtt-first-analysis.md">resource</a>]. Download the outputs on your computer and explore all the data in QGIS…</p>
+
+<p>The raster outputs:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">_Fill.bil</code></td>
+      <td>the filled DEM</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_sh.bil</code></td>
+      <td>the hillshade</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_d8_area.bil</code></td>
+      <td>the flow accumulation or drainage area, using the deterministic-8 method (in square meters)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_FDIST.bil</code></td>
+      <td>the horizontal distance from the outlet along the river network (in meters)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_SLOPE.bil</code></td>
+      <td>the slope on the non-filled DEM (as a gradient in m/m, i.e. dz / dx)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_ASPECT.bil</code></td>
+      <td>the aspect (in degrees, from 0° to 360°)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_CURV.bil</code></td>
+      <td>the curvature</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_AllBasins.bil</code></td>
+      <td>the selected river catchments (also used for basic Chi analysis)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The table outputs, i.e. to be spatialised in QGIS as text-delimited layers (see QGIS tips):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">_CN.csv</code></td>
+      <td>the channel network</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_JN.csv</code></td>
+      <td>the junctions, i.e. river outlets of the channel network</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_chi_data_map.csv</code></td>
+      <td>the basic chi computation for selected catchments</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>With these outputs, you are now able to compute a first graph of longitudinal profiles of the rivers in your study area. However, it will be poorly useful as too many river streams are extracted from the DEM.</p>
+
+<h3 id="qualitative-description-of-the-study-area">Qualitative description of the study area</h3>
+
+<p>Computing hillshade and slope will help you to get a better visualisation of the topography. The two rasters are normally created during the previous step using the <code class="highlighter-rouge">lsdtt-basic-metrics</code> module of LSDTopoTools. Otherwise, you can generate these outputs using toolboxes in QGIS via the menu “Raster &gt; Analysis”.</p>
+
+<p>The typical purpose of the hillshade it to create a 3D impression of your DEM. To do so, the hillshade should be superimposed to the DEM with a given transparency. To set the transparency in QGIS, choose the tab “Transparency” in the layer properties and adjust the value.</p>
+
+<p>Using the hillshaded DEM, you can do the following steps just by visual inspection :</p>
+
+<ul>
+  <li>characterise the drainage river pattern (dentritic, parallel, rectangular), and changes throughout the landscape.</li>
+  <li>highlight discontinuities in the drainage pattern, meandering behaviour, …</li>
+  <li>identify ridges, depressions, discontinuities in the topography.</li>
+  <li>map human infrastructures that divert the course of the rivers.</li>
+</ul>
+
+<p>In addition, draw transversal profiles to capture the global topography of the area, using the plugin “Profile tool” (see <a href="random-topics.md">random topics</a>). Export outputs into text files and process them in Excel or R.</p>
+
+<p>Eventually, you can confront your observations with literature and geological setting of your study area.</p>
+
+<h3 id="plan-your-work">Plan your work</h3>
+
+<p>The use of LSDTopoTools might confusing and the learning curve a bit steep in the beginning…  The distinction between things that can be done in LSDTopoTools and in QGIS can be difficult too. In addition, some functions and capabilities of the 3 modules of LSDTopoTools overlap with each other. You can indeed create the river network using the <code class="highlighter-rouge">lsdtt-chi-analysis</code> module for instance, whereas there is a specific <code class="highlighter-rouge">lsdtt-channel-extraction</code> module. It is partly due to the fact that advanced computations need the basic ones as inputs and partly due to the fact that you manipulate an open-source software that is incrementally built by researchers depending on their needs… Therefore, before going further in the analysis, a mandatory step is to plan your work…</p>
+
+<p>Write down a work plan / workflow (diagram with annotations, drawing, short text,…) of analyses required to fulfill the project. This work plan should detail each milestone to achieve the project and how everything connects to the final goal.</p>
+
+<ul>
+  <li>What are the required outputs ?</li>
+  <li>Which analyses ? For which purpose ? In which sequence ?</li>
+  <li>Which parameters for which tool ? How to define them ?</li>
+  <li>Which analysis on which software (LSDTopoTools / QGIS / Excel / R) ?</li>
+  <li>Identify key references about concepts you do not understand well and include link / excerpts / figures / files.</li>
+  <li>Note the spatial extent of the analysis: points along the river, points along a transect, catchment, …</li>
+  <li>Note the use of each analysis/result, in the frame of your research question.</li>
+  <li>Note how you plan to combine/compare metrics to get additional knowledge.</li>
+  <li>The more detailed is the workflow, the easiest it will be to perform the analyses.</li>
+</ul>
+
+<p>Create your work plan in the related tab of your group channel on Microsoft Teams.</p>
+
+<blockquote>
+  <p>The tab “Workflow” is a OneNote notebook that can be edited simultaneously by each member of the channel. You can create several notes, draw sketches, includes post-its, files, images…</p>
+</blockquote>
+
+<hr />
+
+<h1 id="session-3---tune-parameters">Session 3 - Tune parameters</h1>
+
+<h2 id="objectives-1">Objectives</h2>
+
+<ol>
+  <li>Create the river network ::: Tune parameters to derive the river network.</li>
+  <li>Focus your analysis ::: Select rivers and catchments to be further analysed.</li>
+  <li>Get your final results ::: Tune parameters, create and process results.</li>
+</ol>
+
+<hr />
+
+<p>In order to analyse the spatial pattern of the tectonic signal in your study area, you will compare rivers and associated river catchments. Therefore, the first step is to extract the river network and catchments.</p>
+
+<h2 id="river-network-extraction">River network extraction</h2>
+
+<p>In the first topographic analysis, two parameters are set to create the river network:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print_channels_to_csv: <span class="nb">true
+</span>threshold_contributing_pixels: 1000
+</code></pre></div></div>
+
+<p>The default value of contributing <strong>pixels</strong> to initiate rivers is set to 1000. By default, it produces something like:</p>
+
+<p><img src="imgs/xian-rivers-default.png" alt="rivers-default" /></p>
+
+<p>As with the <em>Channel extraction</em> toolbox of QGIS, you can tune this parameter that represents the <em>amount of water</em> which is needed to <em>create</em> river sources:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>threshold_contributing_pixels: 5000
+</code></pre></div></div>
+
+<blockquote>
+  <p>The idea is to have a channel network that does not account for high-order rivers. Think about maniability of datasets for further analyses. You do not want delete unwanted streams by hand to discard very small first-order streams.</p>
+</blockquote>
+
+<p><img src="imgs/xian-rivers-5000.png" alt="rivers-5000" /></p>
+
+<p>In addition, LSDTopoTools can create a <code class="highlighter-rouge">.csv</code> file containing the river junctions, i.e. <code class="highlighter-rouge">_JN.csv</code>.  The latter can be useful to limit subsequent analyses to selected river catchments (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html#_picking_basins">documentation</a>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print_junctions_to_csv: <span class="nb">true</span>
+</code></pre></div></div>
+
+<p><img src="imgs/xian-rivers-junctions.png" alt="river-junctions" /></p>
+
+<p>Perform a sensitivity analysis on the <code class="highlighter-rouge">threshold_contributing_pixels</code> parameter in order to derive a satisfying river network, which will be the basis for further analyses.</p>
+
+<h2 id="river-catchment-delineation">River catchment delineation</h2>
+
+<p>In topographic analysis, you will not only analyse rivers but also catchments, i.e. mainly for hypsometric curves and chi computation with LSDTopoTools. Two methods are available: (1) automatic delineation using minimum and maximum catchment areas or (2) manual delineation by selecting outlets of interest.</p>
+
+<h3 id="automatic-delineation">Automatic delineation</h3>
+
+<p>Using the automatic delineation will require a sensitivity analysis on minimum and maximum catchment area parameters, in order to produce a relevant subsequent analysis.</p>
+
+<blockquote>
+  <p>The idea is to get catchments that are not too large, i.e. the comparison between catchments will be limited, but also not too small, i.e. the amount of catchments will complicate the comparison. Find a reasonable trade-off between precision and “maniability” of the data.</p>
+</blockquote>
+
+<p>To extract river catchments, you can use the <code class="highlighter-rouge">lsdtt-basic-metrics</code> module and tune the following parameters:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Getting the basins</span>
+find_basins: <span class="nb">true
+</span>minimum_basin_size_pixels: 100000
+maximum_basin_size_pixels: 400000
+</code></pre></div></div>
+
+<p><img src="imgs/xian-basins-100000-400000.png" alt="basins-raw" /></p>
+
+<p>Here, we miss some small catchments, especially those draining to the North. Let’s decrease the <code class="highlighter-rouge">minimum_basin_size_pixels</code> parameter…</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Getting the basins</span>
+find_basins: <span class="nb">true
+</span>minimum_basin_size_pixels: 10000
+maximum_basin_size_pixels: 400000
+</code></pre></div></div>
+
+<p><img src="imgs/xian-basins-10000-400000.png" alt="xian-basins-10000-400000" /></p>
+
+<p>If you want to divide the larger catchments to have a finer <em>resolution</em>, simply decrease the <code class="highlighter-rouge">maximum_basin_size_pixels</code> parameter…</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Getting the basins</span>
+find_basins: <span class="nb">true
+</span>minimum_basin_size_pixels: 10000
+maximum_basin_size_pixels: 100000
+</code></pre></div></div>
+
+<p><img src="imgs/xian-basins-10000-100000.png" alt="xian-basins-10000-100000" /></p>
+
+<p>Then, we miss the lower extents of catchments. We therefore need to decrease the <code class="highlighter-rouge">minimum_basin_size_pixels</code> again…</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Getting the basins</span>
+find_basins: <span class="nb">true
+</span>minimum_basin_size_pixels: 1000
+maximum_basin_size_pixels: 100000
+</code></pre></div></div>
+
+<p><img src="imgs/xian-basins-1000-10000.png" alt="xian-basins-1000-100000" /></p>
+
+<h3 id="manual-delineation">Manual delineation</h3>
+
+<p>You can manually delineate river catchments by selecting junctions (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html#_picking_basins">documentation</a>).</p>
+
+<ol>
+  <li>
+    <p>Spatialise the <code class="highlighter-rouge">_JN.csv</code> in QGIS.</p>
+  </li>
+  <li>
+    <p>In this layer, select points that you would like to consider as outlets for the selection of catchments.</p>
+  </li>
+  <li>
+    <p>Note the values of the <code class="highlighter-rouge">junction</code> column in the attribute table.</p>
+
+    <p><img src="imgs/xian-junctions-table.png" alt="xian-junctions-table" /></p>
+  </li>
+  <li>
+    <p>Create a text file, e.g. <code class="highlighter-rouge">junctions.txt</code>, which will contain the junction values, i.e. one number per line and upload it in the analysis folder on the server.</p>
+
+    <p><img src="imgs/xian-junctions-file.png" alt="xian-junctions-file" /></p>
+  </li>
+  <li>
+    <p>In the parameters file of your LSDTopoTools analysis, add the following line to force the software to run analyses only on selected catchments.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BaselevelJunctions_file: junctions.txt
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Once you ran the analysis using the <code class="highlighter-rouge">lsdtt-basic-metrics</code> module, you will get something like:</p>
+
+<p><img src="imgs/xian-basins-manual-selection.png" alt="xian-selected-basins" /></p>
+
+<h2 id="first-chi-analysis-and-metrics-for-river-points">First Chi analysis and metrics for river points</h2>
+
+<p>Now that you have properly delineated the river network and associated catchments in your study area, the question is: which rivers will be selected for an in-depth analysis, i.e. transversal profiles, hypsometric curves… Of course, if you are very comfortable with automated geo-processing in QGIS, R or Python, you could perform the analysis on the entire set of delineated river catchments. However, developing advanced automated workflow for geoprocessing is out of scope in this research project… Therefore, you need to find a way to select catchments differently than randomly. To do that, one method is to compute a basic version of the Chi value for every single point of the river network for delineated catchments using the <code class="highlighter-rouge">lsdtt-basic-metrics</code> module with the following parameter:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print_chi_data_maps: <span class="nb">true</span>
+</code></pre></div></div>
+
+<p>You will end up with a <code class="highlighter-rouge">.csv</code> table that contains several useful information to produce graphs the first graphs for the entire study area and get the <em>big picture</em>…</p>
+
+<p><img src="imgs/xian-rivers-chi-basic.png" alt="chi-basic" /></p>
+
+<p>The <code class="highlighter-rouge">basin_key</code> variable in the attribute table enables to categorise points by catchment. Using <code class="highlighter-rouge">chi</code> and <code class="highlighter-rouge">elevation</code> columns, you can compute basic Chi plots, as e.g. in Perroy and Royden (2013).</p>
+
+<p>Processing this table in Excel/R will enable you to produce longitudinal profiles along with Chi plots for the entire study. With that, you will be able to highlight rivers that are in equilibrium or not, patterns in rivers, groups of rivers… Example from <a href="http://web.mit.edu/perron/www/files/PerronRoyden13.pdf">Perron and Royden (2013)</a>:</p>
+
+<p><img src="imgs/perron-royden-2013.png" alt="Perron-Royden-2013" /></p>
+
+<hr />
+
+<h1 id="session-4---compute-results">Session 4 - Compute results</h1>
+
+<p>Expected outputs for further discussion are:</p>
+
+<ul>
+  <li>longitudinal profiles</li>
+  <li>transversal profiles</li>
+  <li>hypsometric curves</li>
+  <li>stream power indices.</li>
+  <li>slope vs drainage area plots</li>
+  <li>channel steepness and concavity</li>
+</ul>
+
+<p>The simple method to compute steepness and concavity is to derive these metrics from the Slope-Area graphs. For an advanced and robust method to derive concavity for selected river catchments, refer to LSDTopoTools <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html">documentation</a>.</p>
+

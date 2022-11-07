@@ -1,0 +1,167 @@
+<h2 id="intro-to-the-shell">Intro to the shell</h2>
+
+<ul>
+  <li>A very short intro on the Linux terminal <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal">here</a>.</li>
+  <li>A longer intro on the Linux terminal <a href="https://ryanstutorials.net/linuxtutorial/">here</a>.</li>
+</ul>
+
+<h3 id="basic-shell-commands">Basic shell commands</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>pwd</td>
+      <td>Print current (working directory)</td>
+    </tr>
+    <tr>
+      <td>ls <em>my_directory</em></td>
+      <td>List files in a directory</td>
+    </tr>
+    <tr>
+      <td>cd <em>my_path</em></td>
+      <td>Define (go to) current directory</td>
+    </tr>
+    <tr>
+      <td>cd</td>
+      <td>Return to <code class="highlighter-rouge">HOME</code> directory</td>
+    </tr>
+    <tr>
+      <td>cd ../</td>
+      <td>Go to parent directory</td>
+    </tr>
+    <tr>
+      <td>rm <em>my_file</em></td>
+      <td>Remove file (<strong>!no way back!</strong>)</td>
+    </tr>
+    <tr>
+      <td>mkdir <em>my_directory</em></td>
+      <td>Create directory</td>
+    </tr>
+    <tr>
+      <td>rmdir -rf <em>my_directory</em></td>
+      <td>Remove directory (<strong>!no way back!</strong>)</td>
+    </tr>
+    <tr>
+      <td>cp <em>path_to_source</em> <em>path_to_destination</em></td>
+      <td>Copy file or directory</td>
+    </tr>
+    <tr>
+      <td>mv <em>path_to_source</em> <em>path_to_destination</em></td>
+      <td>Move file or directory</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Ctrl-Shift-C</code></td>
+      <td>Copy some text in vim editor</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Ctrl-Shift-V</code></td>
+      <td>Paste some text in vim editor</td>
+    </tr>
+    <tr>
+      <td>vim <em>path_to_text_file</em></td>
+      <td>Open text file using <code class="highlighter-rouge">vim</code></td>
+    </tr>
+    <tr>
+      <td>unzip <em>path_to_archive_file</em> -d <em>path_to_destination</em></td>
+      <td>Unzip a <code class="highlighter-rouge">.zip</code> archive in a directory</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Ctrl-C</code></td>
+      <td>Cancel current command</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="good-practices">Good practices</h3>
+
+<p>Working on the terminal can difficult in the beginning. One difficulty is to always know where you are located in the file tree.</p>
+
+<ul>
+  <li>Use <code class="highlighter-rouge">pwd</code> command to print the current directory.</li>
+  <li>
+    <p>Use <code class="highlighter-rouge">ls</code> (list) or <code class="highlighter-rouge">ll</code> (long list) commands to print the content of the current directory. Use it <em>often</em>… Typically after a command that create outputs, to check whether they are created…</p>
+
+    <p><img src="imgs/ls-command.png" alt="ls-command" /></p>
+  </li>
+  <li>Use <code class="highlighter-rouge">Tab</code> key to auto-complete file names and directory names. Hit <code class="highlighter-rouge">Tab</code> key again to get a list of possibilities, if there are several ones.</li>
+  <li>Use <code class="highlighter-rouge">Up </code> and <code class="highlighter-rouge">Down</code> arrows of the keyboard to navigate in the history of commands that you already executed.</li>
+</ul>
+
+<h3 id="paths-examples-on-the-pelican-server">Paths (examples on the Pelican server)</h3>
+
+<p>Some facts about paths to directories and files:</p>
+
+<ul>
+  <li>When you connect to the Pelican server, you land in your <code class="highlighter-rouge">HOME</code> directory.</li>
+  <li>The absolute path of your <code class="highlighter-rouge">HOME</code> directory is: <code class="highlighter-rouge">/home/elic/MY_LOGIN</code>.</li>
+  <li>Anywhere in the file tree, execute the <code class="highlighter-rouge">cd</code> command to return the <code class="highlighter-rouge">HOME</code> directory.</li>
+  <li>Absolute paths are always written with respect to the <code class="highlighter-rouge">root</code> of the file tree, i.e. <code class="highlighter-rouge">/</code>.</li>
+  <li>A typical absolute path to the DEM file would be: <code class="highlighter-rouge">/home/elic/MY_LOGIN/lsdtt/data/dem-analysis/mnt-ambleve-10m.tif</code>.  Notice the <code class="highlighter-rouge">/</code> at the beginning of the path, indicating that it is an absolute path, i.e. starting from the <code class="highlighter-rouge">root</code>.</li>
+  <li>A typical relative path to the DEM file,  if you are located in your <code class="highlighter-rouge">HOME</code> directory: <code class="highlighter-rouge">lsdtt/data/dem-analysis/mnt-ambleve-10m.tif</code>. Note that there is no <code class="highlighter-rouge">/</code> at the beginning of the path.</li>
+  <li>Relative paths are always expressed relatively to the current directory.</li>
+  <li>To know the current directory, use the <code class="highlighter-rouge">pwd</code> command (print working directory).</li>
+</ul>
+
+<h3 id="sequence-of-example-commands">Sequence of example commands</h3>
+
+<p>Type and execute the following sequence of commands to learn how to communicate with the server:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Print working directory</span>
+<span class="nb">pwd</span>
+<span class="c"># List files in current directory</span>
+<span class="nb">ls</span>
+<span class="c"># create new directory</span>
+<span class="nb">mkdir </span>dem-analysis
+<span class="c"># create file in dem-analysis directory</span>
+vim dem-analysis/params.txt
+<span class="c"># type i to activate insert mode, write something, hit Esc to quit edit mode, type ":wq" to write and quit the file</span>
+<span class="c"># List files in dem-analysis directory</span>
+<span class="nb">ls </span>dem-analysis
+<span class="c"># Enter dem-analysis directory</span>
+<span class="nb">cd </span>dem-analysis
+<span class="c"># List files in current direct</span>
+<span class="nb">ls</span>
+<span class="c"># List files in parent directory</span>
+<span class="nb">ls</span> ../
+<span class="c"># Create new directory in current directory</span>
+<span class="nb">mkdir </span>outputs
+<span class="c"># list files in current directory</span>
+<span class="nb">ls</span>
+<span class="c"># Copy params.txt into outputs directory with a new name</span>
+<span class="nb">cp </span>params.txt outputs/params-v2.txt
+<span class="c"># Return to HOME directory</span>
+<span class="nb">cd</span>
+<span class="c"># Enter outputs directory</span>
+<span class="nb">cd </span>dem-analysis/outputs
+<span class="c"># Modify params-v2.txt file. Use "Ctrl-Shift-C" to copy and "Ctrl-Shift-V" to paste text.</span>
+vim params-v2.txt
+<span class="c"># Print working directory</span>
+<span class="nb">pwd</span>
+<span class="c"># Return to dem-analysis directory. The ~ is a way to create a path from the HOME directory. Useful when your are "lost" in the file structure.</span>
+<span class="nb">cd</span> ~/dem-analysis
+<span class="c"># Copy outputs as a new directory. The "-r" parameter is for "recursive", i.e. it will copy all subdirectories too.</span>
+<span class="nb">cp</span> <span class="nt">-r</span> outputs outputs-v2
+<span class="c"># List files in current directory</span>
+<span class="nb">ls</span>
+<span class="c"># Delete outputs/params.txt</span>
+<span class="nb">rm </span>outputs/params-v2.txt
+<span class="c"># Delete params.txt in current directory. The "-f" parameter is for "force".  </span>
+<span class="nb">rm</span> <span class="nt">-f</span> params.txt
+<span class="c"># Delete outputs-v2.</span>
+<span class="nb">rm </span>outputs-v2
+<span class="c"># To delete non-empty directories, do not forget the "-rf" parameters</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> outputs-v2
+<span class="c"># List files in current directory</span>
+<span class="nb">ls</span>
+<span class="c"># Return to HOME directory</span>
+<span class="nb">cd</span>
+<span class="c"># Delete dem-analysis directory</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> dem-analysis
+</code></pre></div></div>
+

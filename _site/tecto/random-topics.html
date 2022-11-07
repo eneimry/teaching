@@ -1,0 +1,83 @@
+<h1 id="random-topics">Random topics</h1>
+
+<h2 id="average-using-a-moving-window">Average using a moving window</h2>
+
+<p>Topographic data, as many other types of data, are noisy due to DEM creation and subsequent topographic derivatives. Therefore, it is often a good idea to smooth variables by averaging them using a moving window. The principle is very simple: replace a data point with the average of its neighbours, i.e. a window around the point (<a href="http://www.statistics4u.info/fundstat_eng/cc_moving_average.html">source</a>).</p>
+
+<p><img src="imgs/moving-window.png" alt="Average-moving-window" />*</p>
+
+<p>The implementation of a moving window can simply be done either in Excel, R… In R, the suitable function is the <code class="highlighter-rouge">rollmean()</code> function from the <code class="highlighter-rouge">zoo</code> package (<a href="https://www.rdocumentation.org/packages/zoo/versions/1.8-8/topics/rollmean">resource</a>).</p>
+
+<p>For topographic analyses, smoothing data is typically achieved on slope for Slope-Area graphs and on stream power index along the river longitudinal distance.</p>
+
+<h2 id="concavity-and-channel-steepness-indices">Concavity and channel steepness indices</h2>
+
+<p>Some resources to better understand the theory about concavity, channel steepness and chi metrics:</p>
+
+<ul>
+  <li>For a very brief overview, refer to the intro of the Chi module of LSDTopoTools: <a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html">Link</a>.</li>
+  <li>The purpose of Chi plots, i.e. computing Chi instead of slope: <a href="http://web.mit.edu/perron/www/files/PerronRoyden13.pdf">Perron and Royden (2013)</a>.</li>
+  <li>The two research papers behind the module of LSDTopoTools: <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JF002981">Mudd et al. (2014)</a> and <a href="https://esurf.copernicus.org/articles/6/505/2018/esurf-6-505-2018.pdf">Mudd et al. (2018)</a>.</li>
+</ul>
+
+<h2 id="hypsometric-curves">Hypsometric curves</h2>
+
+<p>Following Strahler (1952), the hypsometric curve relates horizontal cross-sectional area of a drainage basin to relative elevation above basin mouth. As both parameters (in x and y) are dimensionless, curves can be described and compared irrespective of basin size or shape. In other words, it describes the relative proportion of the watershed area that lies at or above a given height relative to the total relief of the watershed (Luo, 1998). Differences in the shape of the curve are related to the degree of disequilibrium in the balance of erosive and tectonic forces (Weissel and Pratson, 1994).</p>
+
+<p><img src="imgs/hypsometric-curves.png" alt="hypsometric-curves" /></p>
+
+<p><strong>References</strong></p>
+
+<ul>
+  <li>Luo, W. (1998). Hypsometric analysis with a geographic information system. <em>Computers &amp; Geosciences</em>, <em>24</em>(8), 815-821.</li>
+  <li>Strahler, A.N. (1952). Hypsometric (area-altitude) analysis of erosional topography. Geological Society of America Bulletin, 63, 1117-1142.</li>
+  <li>Weissel, J.K., Pratson, L.F. (1994). The length-scaling properties of topography. Journal of Geophysical Research, 99, 13997-14012.</li>
+</ul>
+
+<h3 id="to-compute-hypsometric-curves-in-qgis">To compute hypsometric curves in QGIS</h3>
+
+<p>In QGIS, use the <em>Hypsometric curves</em> toolbox available in the QGIS processing tools “Raster terrain analysis” (<u>not</u> “Hypsometry” from SAGA GIS).</p>
+
+<ol>
+  <li>Define the digital elevation model.</li>
+  <li>Define the “Boundary layer” parameter. It defines the limits of the river catchment of interest. It can be either a single polygon shapefile or a selected polygon in a multi-polygon shapefile. You can also loop on all the polygons of one given shapefile.</li>
+  <li>Importantly, define the “step” parameter. It defines the increment for the elevation, from the lowest to the highest point of the river catchment.</li>
+  <li>
+    <p>You can also consider to check the box “Use % of are instead of absolute value”, in order to have a relative hypsometric curve and to allow comparison between catchments.</p>
+
+    <p><img src="imgs/hypsometric-curves-qgis.png" alt="hypsometric-curves-qgis" /></p>
+  </li>
+</ol>
+
+<p>The output is a <code class="highlighter-rouge">csv</code> file, which contains the binned values for relative <strong>downslope</strong> catchment area and <strong>absolute</strong> elevation. You will therefore need to post-process the values to plot correct hypsometric curves.</p>
+
+<ul>
+  <li>
+    <p>Relative height is computed by normalising height over its range, i.e. <em>[(z - z_{min}) / (z_{max} - z_{min}) ] * 100</em></p>
+  </li>
+  <li>
+    <p>Relative <strong>upslope</strong> area is computed as follows: <em>100 - downslope area</em></p>
+  </li>
+</ul>
+
+<p>Visually, you should end up with something like:</p>
+
+<p><img src="imgs/hypso_example.png" alt="hypso-example" /></p>
+
+<p>Here is the example file: <a href="files/hypsometric-curves.ods">link</a></p>
+
+<h2 id="use-profile-tool">Use Profile tool</h2>
+
+<ol>
+  <li>In the table of contents of QGIS, select the DEM layer.</li>
+  <li>Open “Profile tool “ via the menu “Plugins”.</li>
+  <li>Click on the button “Add Layer”, to define the DEM from which you will extract elevation.</li>
+  <li>In the “Options” panel, define “Selection” as “Temporary polyline”.</li>
+  <li>Interactively draw a line on the DEM to define the extent of the topographic profile. You can also use polyline shapefiles.
+<img src="imgs/Profile-tool.png" alt="Profile-tool_image" /></li>
+  <li>Once the profile is ok, open the “Table” tab.</li>
+  <li>Click on “Copy to clipboard (with coordinates)”.</li>
+  <li>Open Excel and paste the profile.</li>
+  <li>Headers of columns are: “Distance” / “Longitude” / “Latitude” / “Elevation”.</li>
+  <li>You can now plot the profile directly in Excel, and eventually save the table for further processing.</li>
+</ol>

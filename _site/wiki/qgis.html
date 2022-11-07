@@ -1,1 +1,198 @@
-<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <title>QGIS - Just Geomorphology</title> <link rel="shortcut icon" href="/teaching/favicon.ico" type="image/x-icon"> <link rel="stylesheet" href="/teaching/assets/css/just-the-docs-default.css"> <script type="text/javascript" src="/teaching/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="/teaching/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.7.1 --> <title>QGIS | Just Geomorphology</title> <meta name="generator" content="Jekyll v4.1.1" /> <meta property="og:title" content="QGIS" /> <meta property="og:locale" content="en_US" /> <meta name="description" content="Didactic resources in Physical Geography at the School of Geography of UCLouvain (Belgium)" /> <meta property="og:description" content="Didactic resources in Physical Geography at the School of Geography of UCLouvain (Belgium)" /> <link rel="canonical" href="http://localhost:4000/teaching/wiki/qgis.html" /> <meta property="og:url" content="http://localhost:4000/teaching/wiki/qgis.html" /> <meta property="og:site_name" content="Just Geomorphology" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="QGIS" /> <script type="application/ld+json"> {"@type":"WebPage","url":"http://localhost:4000/teaching/wiki/qgis.html","headline":"QGIS","description":"Didactic resources in Physical Geography at the School of Geography of UCLouvain (Belgium)","@context":"https://schema.org"}</script> <!-- End Jekyll SEO tag --> </head> <body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewBox="0 0 24 24"> <title>Link</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"> <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"> <title>Search</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"> <title>Menu</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"> <title>Expand</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"> <title>Document</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"> <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg> <div class="side-bar"> <div class="site-header"> <a href="http://localhost:4000/teaching/" class="site-title lh-tight"> Just Geomorphology </a> <a href="#" id="menu-button" class="site-button"> <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a> </div> <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"> <ul class="nav-list"><li class="nav-list-item"><a href="http://localhost:4000/teaching/" class="nav-list-link">Welcome</a></li><li class="nav-list-item"><a href="#" class="nav-list-expander"><svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/teaching/tecto/" class="nav-list-link">Tectonic Geomorphology</a><ul class="nav-list "><li class="nav-list-item "><a href="http://localhost:4000/teaching/tecto/technical-considerations.html" class="nav-list-link">Technical considerations</a></li><li class="nav-list-item "><a href="http://localhost:4000/teaching/tecto/session-1.html" class="nav-list-link">Session 1</a></li><li class="nav-list-item "><a href="http://localhost:4000/teaching/tecto/session-2.html" class="nav-list-link">Session 2</a></li><li class="nav-list-item "><a href="http://localhost:4000/teaching/tecto/session-3.html" class="nav-list-link">Session 3</a></li></ul></li><li class="nav-list-item active"><a href="#" class="nav-list-expander"><svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/teaching/wiki/" class="nav-list-link">Tricks and tips</a><ul class="nav-list "><li class="nav-list-item active"><a href="http://localhost:4000/teaching/wiki/qgis.html" class="nav-list-link active">QGIS</a></li><li class="nav-list-item "><a href="http://localhost:4000/teaching/wiki/lsdtt.html" class="nav-list-link">LSDTopoTools</a></li><li class="nav-list-item "><a href="http://localhost:4000/teaching/wiki/mobaxterm.html" class="nav-list-link">MobaXterm</a></li><li class="nav-list-item "><a href="http://localhost:4000/teaching/wiki/oasis.html" class="nav-list-link">Oasis server</a></li></ul></li></ul> </nav> <footer class="site-footer"> This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll. </footer> </div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Just Geomorphology" aria-label="Search Just Geomorphology" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> </div> <div id="main-content-wrap" class="main-content-wrap"> <nav aria-label="Breadcrumb" class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/teaching/wiki/">Tricks and tips</a></li> <li class="breadcrumb-nav-list-item"><span>QGIS</span></li> </ol> </nav> <div id="main-content" class="main-content" role="main"> <h1 id="qgis-tips-and-hints"> <a href="#qgis-tips-and-hints" class="anchor-heading" aria-labelledby="qgis-tips-and-hints"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> QGIS tips and hints </h1> <h2 id="good-practices"> <a href="#good-practices" class="anchor-heading" aria-labelledby="good-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Good practices </h2> <ul> <li>Always save the outputs of toolboxes on the disk of your machine. Do <strong>not</strong> use temporary files.</li> <li>Always work with layers which have <strong>the same projection</strong>. QGIS efficiently deals with the EPSG codes, i.e. 4-5 digit numbers that represent coordinate reference system definitions. Also make sure that the data frame has the same projection than layers. EPSG codes are listed on the <a href="https://epsg.io/">epsg.io</a> or <a href="https://spatialreference.org/ref/epsg/">spatialreference.org</a> websites. For instance, the WGS84 is EPSG:4326, the Lambert 72 is EPSG:31370, and the UTM 31N is EPSG:32631. As in ArGIS, the data frame peojection is defined by the projection of the first layer imported in the project. <ul> <li>To reproject a shapefile: “Menu Vector &gt; Data Management Tools &gt; Reproject Layer”.</li> <li>To reproject a raster: “Menu Raster &gt; Projections &gt; Warp (Reproject)”.</li> <li>To define the data frame coordinate reference system: “Menu Project &gt; Properties” &gt; Tab “CRS”.</li> </ul> </li> <li>Avoid spaces and special characters in filenames.</li> <li>Use <code class="language-plaintext highlighter-rouge">.shp</code> for vector data and <code class="language-plaintext highlighter-rouge">.tif</code> for raster data. For raster data, it might also be <code class="language-plaintext highlighter-rouge">.sgrd</code> or <code class="language-plaintext highlighter-rouge">.sdat</code>, depending on the toolboxes that you run.</li> </ul> <h2 id="layer-not-rendering-properly"> <a href="#layer-not-rendering-properly" class="anchor-heading" aria-labelledby="layer-not-rendering-properly"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Layer not rendering properly </h2> <p>Single-band raster datasets are usually rendered using a color ramp from black to white. In practice, it means that the range of values contained in the datasets is stretched over the black to white gradient. If the distribution of these values is not relatively constant over the entire range, e.g. the majority of values is less than 1000 while only a few pixels have very large values (e.g. &gt; 10^6), the GIS will render a completely black layer. This might be caused by a mis-interpretation of no data values in digital elevation models. It is also typical for flow accumulation data (few large values in rivers while majority of hillslopes have low values).</p> <p>To properly render such raster datasets, the idea is to ask QGIS to render values only on the currently visible range of pixel values. To do so:</p> <ol> <li>Open the properties of the layer.</li> <li>Open the “Symbology” tab.</li> <li>In the “Min/Max Value Settings” section, define “Statistics Extent” as “Updated canvas” in the dropdown menu.</li> </ol> <p><img src="imgs/qgis-stretch-values.png" alt="raster-rendering" /></p> <h2 id="processing-toolboxes"> <a href="#processing-toolboxes" class="anchor-heading" aria-labelledby="processing-toolboxes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Processing toolboxes </h2> <p>If the “Processing Toolbox” panel has disappeared, simply go to the “Menu Processing &gt; Toolbox”.</p> <h2 id="install-plugins-in-qgis"> <a href="#install-plugins-in-qgis" class="anchor-heading" aria-labelledby="install-plugins-in-qgis"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install plugins in QGIS </h2> <ol> <li>Go to menu “Plugins &gt; Manage and install plugins”.</li> <li>Browse the plugins and install the ones needed, e.g. “Profile tools” or “Base layers”. <img src="imgs/Plugins.png" alt="Plugins_image" /></li> <li>Plugins are now accessible either in the menu “Plugins” or in the other menus, e.g. “Processing”.</li> </ol> <h2 id="add-base-layers"> <a href="#add-base-layers" class="anchor-heading" aria-labelledby="add-base-layers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Add base layers </h2> <p>You can add base layers, e.g. OpenStreetMap, using the plugin “QuickMapServices” plugin in QGIS.</p> <ol> <li>Install the plugin via the Plugin Menu.</li> <li>Activate base layers via the menu “Web &gt; QuickMapServices”.</li> </ol> <h2 id="add-wms-layer"> <a href="#add-wms-layer" class="anchor-heading" aria-labelledby="add-wms-layer"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Add WMS layer </h2> <p>GIS resources may be stored on GIS servers. This is often the case in companies, public administrations,… where several people need to access up-to-date versions of spatial datasets. Such datasets can potentially be accessed using the Web Map Service (WMS) protocol by external users, directly in their local GIS software. To do that, you need the url of the WMS and, if applicable, the credentials.</p> <p>WMS adresses are usually stored in metadata of spatial datasets. For instance, wms of WalonMap data are accessible in the “Fiche descriptive &gt; Accès” of each data.</p> <p><img src="imgs/wms-walonmap.png" alt="wms-walonmap" /></p> <p>Two lists of WMS in Belgium:</p> <ul> <li>The “institutional” repository: <a href="https://www.geo.be/">https://www.geo.be/</a></li> <li>A “unofficial” list: <a href="https://wms.michelstuyts.be/">https://wms.michelstuyts.be/</a></li> </ul> <p>In practice, in QGIS, for the IGN cartoweb layer:</p> <ol> <li>Menu “Layer” &gt; “Add Layer” &gt; “Add WMS/WMTS Layer”</li> <li> <p>Click “New” and enter these parameters.</p> <div class="table-wrapper"><table> <thead> <tr> <th>Setting</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td>Name</td> <td>IGN</td> </tr> <tr> <td>URL</td> <td><a href="http://wms.ngi.be/inspire/topomaps/service?version=1.3.0">http://wms.ngi.be/inspire/topomaps/service?version=1.3.0</a></td> </tr> </tbody> </table></div> </li> <li>Click “OK”.</li> <li>Select the layer and click “Connect”. A list of all available layers is provided in the table.</li> <li> <p>Choose which layer you want to add in your project and click “Add”.</p> <p><img src="imgs/wms-ign.png" alt="wms-ign" /></p> </li> </ol> <h2 id="crop-dem"> <a href="#crop-dem" class="anchor-heading" aria-labelledby="crop-dem"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Crop DEM </h2> <ol> <li>Open the DEM in QGIS.</li> <li>Select the tool “Clip Raster by Extent” in the menu “Raster &gt; Extraction”.</li> <li>Fill the toolbox. You can either define the extent interactively by drawing a rectangle in the dataframe or use a shapefile.</li> <li>Export the result in the <strong>.bil format</strong>.</li> </ol> <h2 id="use-profile-tool"> <a href="#use-profile-tool" class="anchor-heading" aria-labelledby="use-profile-tool"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Use Profile tool </h2> <ol> <li>In the table of contents of QGIS, select the DEM layer.</li> <li>Open “Profile tool “ via the menu “Plugins”.</li> <li>Click on the button “Add Layer”, to define the DEM from which you will extract elevation.</li> <li>In the “Options” panel, define “Selection” as “Temporary polyline”.</li> <li>Interactively draw a line on the DEM to define the extent of the topographic profile. You can also use polyline shapefiles. <img src="imgs/Profile-tool.png" alt="Profile-tool_image" /></li> <li>Once the profile is ok, open the “Table” tab.</li> <li>Click on “Copy to clipboard (with coordinates)”.</li> <li>Open Excel and paste the profile.</li> <li>Headers of columns are: “Distance” / “Longitude” / “Latitude” / “Elevation”.</li> <li>You can now plot the profile directly within Excel, and eventually save the table.</li> </ol> <h2 id="add-text-delimited-layers"> <a href="#add-text-delimited-layers" class="anchor-heading" aria-labelledby="add-text-delimited-layers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Add text-delimited layers </h2> <p>Based on a csv file containing coordinates, you can create a layer to be spatialised in QGIS, e.g. channel network outputs from LSDTopoTools.</p> <ol> <li>Open the tool ‘Add delimited text layer’ in the menu “Layer &gt; Add Layer”.</li> <li>Browse to find the csv file containing coordinates to be spatialised. <ol> <li>Select <strong>csv file format</strong> just below where you select the file.</li> <li>You need to check on the <strong>X Field</strong> and <strong>Y Field</strong> entries to make sure that they are correct!</li> <li>Define the correct coordinate system, in which points are defined.</li> <li>Click on the button “Add”.</li> <li>A temporary point layer is created. You need to save it to a permanent file if needed.</li> </ol> </li> </ol> <p><img src="imgs/Text-delimited-layer.png" alt="Delimited-text-layer_image" /></p> <h2 id="convert-raster-to-vector"> <a href="#convert-raster-to-vector" class="anchor-heading" aria-labelledby="convert-raster-to-vector"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Convert raster to vector </h2> <p>This tool is useful to create polygons defining the extent of river catchments, because LSDTopoTools provides a raster as output.</p> <ol> <li>Open the “Polygonize” tool in the menu “Raster &gt; Conversion”.</li> <li> <p>Define which raster you need to process and run…</p> <p><img src="imgs/Polygonize.png" alt="Polygonize_image" /></p> </li> </ol> <h2 id="extract-values-of-rasters-to-points"> <a href="#extract-values-of-rasters-to-points" class="anchor-heading" aria-labelledby="extract-values-of-rasters-to-points"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Extract values of rasters to points </h2> <p>You can extract raster values at the location of points, defined by a shapefile. To do so, use the tool “Add raster values to poitns”, available in the menu “Processing &gt; Toolbox”. Either search by name or find in the the toolbox structure: SAGA &gt; Vector / Raster.</p> <p><img src="imgs/ExtractValuesPoints.png" alt="ExtractValuesToPoints" /></p> <p>If the “Add raster values to points” does not work properly, an built-in QGIS alternative is the “Sample Raster Values”.</p> <p><img src="imgs/qgis-sample-values.png" alt="qgis-sample-values" /></p> <hr> <footer> <p><a href="#top" id="back-to-top">Back to top</a></p> <div class="d-flex mt-2"> </div> </footer> </div> </div> <div class="search-overlay"></div> </div> </body> </html>
+<h1 id="qgis-tips-and-hints">QGIS tips and hints</h1>
+
+<h2 id="good-practices">Good practices</h2>
+
+<ul>
+  <li>Always save the outputs of toolboxes on the disk of your machine. Do <strong>not</strong> use temporary files.</li>
+  <li>Always work with layers which have <strong>the same projection</strong>. QGIS efficiently deals with the EPSG codes, i.e. 4-5 digit numbers that represent coordinate reference system definitions. Also make sure that the data frame has the same projection than layers. EPSG codes are listed on the <a href="https://epsg.io/">epsg.io</a> or <a href="https://spatialreference.org/ref/epsg/">spatialreference.org</a> websites. As in ArcGIS, the data frame projection is defined by the projection of the first layer imported in the project.
+    <ul>
+      <li>To reproject a shapefile: “Menu Vector &gt; Data Management Tools &gt; Reproject Layer”.</li>
+      <li>To reproject a raster: “Menu Raster &gt; Projections &gt; Warp (Reproject)”.</li>
+      <li>To define the data frame coordinate reference system: “Menu Project &gt; Properties” &gt; Tab “CRS”.</li>
+    </ul>
+  </li>
+  <li>Avoid spaces and special characters in filenames.</li>
+  <li>Use <code class="highlighter-rouge">.shp</code> for vector data and <code class="highlighter-rouge">.tif</code> for raster data. For raster data, it might also be <code class="highlighter-rouge">.sgrd</code> or <code class="highlighter-rouge">.sdat</code>, depending on the toolboxes that you run.</li>
+</ul>
+
+<p>Some common coordinate system EPSG identifiers:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Coordinate system</th>
+      <th>EPSG ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>WGS 84</td>
+      <td>4326</td>
+    </tr>
+    <tr>
+      <td>WGS 84 - Pseudo-Mercator (Google / OSM WMS data)</td>
+      <td>3857</td>
+    </tr>
+    <tr>
+      <td>Belgian Lambert 72</td>
+      <td>31370</td>
+    </tr>
+    <tr>
+      <td>Belgian Lambert 2008</td>
+      <td>3812</td>
+    </tr>
+    <tr>
+      <td>UTM 31 N (covers Belgium)</td>
+      <td>32631</td>
+    </tr>
+    <tr>
+      <td>UTM 32 N (covers the most eastern part of Belgium, i.e. High Fens and Cantons de l’Est)</td>
+      <td>32632</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="dem-symbology--dem-not-rendering-properly">DEM symbology / DEM not rendering properly</h2>
+
+<p>Single-band raster datasets are usually rendered using a color ramp from black to white. In practice, it means that the range of values contained in the datasets is stretched over the black to white gradient. If the distribution of these values is not relatively constant over the entire range, e.g. the majority of values is less than 1000 while only a few pixels have very large values (e.g. &gt; 10^6), the GIS will render a completely black layer. This might be caused by a mis-interpretation of no data values in digital elevation models. It is also typical for flow accumulation data (few large values in rivers while majority of hillslopes have low values).</p>
+
+<p>To properly render such raster datasets, the idea is to ask QGIS to render values only on the currently visible range of pixel values. To do so:</p>
+
+<ol>
+  <li>
+    <p>Open the properties of the layer.</p>
+  </li>
+  <li>
+    <p>Open the “Symbology” tab.</p>
+  </li>
+  <li>
+    <p>In the “Min/Max Value Settings” section, define “Statistics Extent” as “Updated canvas” in the dropdown menu.</p>
+
+    <p><img src="imgs/qgis-stretch-values.png" alt="raster-rendering" /></p>
+  </li>
+  <li>
+    <p>Zoom in on small portions of the DEM. You will see that the colour of the pixels will adapt to the range of the visible elevation.</p>
+  </li>
+</ol>
+
+<h2 id="processing-toolboxes">Processing toolboxes</h2>
+
+<p>If the “Processing Toolbox” panel has disappeared, simply go to the “Menu Processing &gt; Toolbox”.</p>
+
+<h2 id="install-plugins-in-qgis">Install plugins in QGIS</h2>
+
+<ol>
+  <li>Go to menu “Plugins &gt; Manage and install plugins”.</li>
+  <li>Browse the plugins and install the ones needed, e.g. “Profile tools” or “Base layers”.
+ <img src="imgs/Plugins.png" alt="Plugins_image" /></li>
+  <li>Plugins are now accessible either in the menu “Plugins” or in the other menus, e.g. “Processing”.</li>
+</ol>
+
+<h2 id="add-base-layers">Add base layers</h2>
+
+<p>You can add base layers, e.g. OpenStreetMap, using the plugin “QuickMapServices” plugin in QGIS.</p>
+
+<ol>
+  <li>Install the plugin via the Plugin Menu.</li>
+  <li>Activate base layers via the menu “Web &gt; QuickMapServices”.</li>
+</ol>
+
+<h2 id="add-wms-layer">Add WMS layer</h2>
+
+<p>GIS resources may be stored on GIS servers. This is often the case in companies, public administrations,… where several people need to access up-to-date versions of spatial datasets. Such datasets can potentially be accessed using the Web Map Service (WMS) protocol by external users, directly in their local GIS software. To do that, you need the url of the WMS and, if applicable, the credentials.</p>
+
+<p>WMS adresses are usually stored in metadata of spatial datasets. For instance, wms of WalonMap data are accessible in the “Fiche descriptive &gt; Accès” of each data.</p>
+
+<p><img src="imgs/wms-walonmap.png" alt="wms-walonmap" /></p>
+
+<p>Two lists of WMS in Belgium:</p>
+
+<ul>
+  <li>The “institutional” repository: <a href="https://www.geo.be/">https://www.geo.be/</a></li>
+  <li>A “unofficial” list: <a href="https://wms.michelstuyts.be/">https://wms.michelstuyts.be/</a></li>
+</ul>
+
+<p>In practice, in QGIS, for the IGN cartoweb layer:</p>
+
+<ol>
+  <li>Menu “Layer” &gt; “Add Layer” &gt; “Add WMS/WMTS Layer”</li>
+  <li>
+    <p>Click “New” and enter these parameters.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>IGN</td>
+        </tr>
+        <tr>
+          <td>URL</td>
+          <td><a href="http://wms.ngi.be/inspire/topomaps/service?version=1.3.0">http://wms.ngi.be/inspire/topomaps/service?version=1.3.0</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Click “OK”.</li>
+  <li>Select the layer and click “Connect”. A list of all available layers is provided in the table.</li>
+  <li>
+    <p>Choose which layer you want to add in your project and click “Add”.</p>
+
+    <p><img src="imgs/wms-ign.png" alt="wms-ign" /></p>
+  </li>
+</ol>
+
+<h2 id="crop-dem">Crop DEM</h2>
+
+<ol>
+  <li>Open the DEM in QGIS.</li>
+  <li>Select the tool “Clip Raster by Extent” in the menu “Raster &gt; Extraction”.</li>
+  <li>Fill the toolbox. You can either define the extent interactively by drawing a rectangle in the dataframe or use a shapefile.</li>
+  <li>Export the result in the <strong>.bil</strong> format if to be used as an input of LSDTopoTools or as a <strong>.tif</strong> in other cases.</li>
+</ol>
+
+<h2 id="add-text-delimited-layers">Add text-delimited layers</h2>
+
+<p>Based on a csv file containing coordinates, you can create a layer to be spatialised in QGIS, e.g. channel network outputs from LSDTopoTools.</p>
+
+<ol>
+  <li>Open the tool ‘Add delimited text layer’ in the menu “Layer &gt; Add Layer”.</li>
+  <li>Browse to find the csv file containing coordinates to be spatialised.
+    <ol>
+      <li>Select <strong>csv file format</strong> just below where you select the file.</li>
+      <li>You need to check on the <strong>X Field</strong> and <strong>Y Field</strong> entries to make sure that they are correct!</li>
+      <li>Define the correct coordinate system, in which points are defined.</li>
+      <li>Click on the button “Add”.</li>
+      <li>A temporary point layer is created. You need to save it to a permanent file if needed.</li>
+    </ol>
+  </li>
+</ol>
+
+<p><img src="imgs/Text-delimited-layer.png" alt="Delimited-text-layer_image" /></p>
+
+<h2 id="convert-raster-to-vector">Convert raster to vector</h2>
+
+<p>This tool is useful to create polygons defining the extent of river catchments, because LSDTopoTools provides a raster as output.</p>
+<ol>
+  <li>Open the “Polygonize” tool in the menu “Raster &gt; Conversion”.</li>
+  <li>
+    <p>Define which raster you need to process and run…</p>
+
+    <p><img src="imgs/Polygonize.png" alt="Polygonize_image" /></p>
+  </li>
+</ol>
+
+<h2 id="extract-values-of-rasters-to-points">Extract values of rasters to points</h2>
+
+<p>You can extract raster values at the location of points, defined by a shapefile. To do so, use the tool “Add raster values to poitns”, available in the menu “Processing &gt; Toolbox”. Either search by name or find in the the toolbox structure: SAGA &gt; Vector / Raster.</p>
+
+<p><img src="imgs/ExtractValuesPoints.png" alt="ExtractValuesToPoints" /></p>
+
+<p>If the “Add raster values to points” does not work properly, an built-in QGIS alternative is the “Sample Raster Values”.</p>
+
+<p><img src="imgs/qgis-sample-values.png" alt="qgis-sample-values" /></p>

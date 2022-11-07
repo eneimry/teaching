@@ -1,0 +1,213 @@
+<h1 id="first-topographic-analysis-using-lsdtt">First topographic analysis using LSDTT</h1>
+
+<h2 id="directory-structure">Directory structure</h2>
+
+<h3 id="typical-setup">Typical setup</h3>
+
+<ol>
+  <li>
+    <p>In the <code class="highlighter-rouge">lsdtt/data</code> directory, create a new directory for your analyses, e.g. named <code class="highlighter-rouge">dem-analysis</code>, and enter it:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd
+ cd </span>lsdtt/data
+
+ <span class="nb">mkdir </span>dem-analysis
+ <span class="nb">cd </span>dem-analysis
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>All the guidelines are based on this specific directory structure.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="get-the-dem-of-your-study-area">Get the DEM of your study area</h2>
+
+<p><strong>IMPORTANT:</strong> From now, all parameters in UPPERCASE need to be adjusted according to your study area / login / directory structure…</p>
+
+<p>The DEM of your study are is stored as an archive file <code class="highlighter-rouge">.zip</code> in the <code class="highlighter-rouge">/storepelican/fclapuyt/LGEO2240-DEM/</code> directory.</p>
+
+<p><img src="imgs/storepelican-dem.png" alt="storepelican-dem" /></p>
+
+<p>The aim is to copy the <code class="highlighter-rouge">.zip</code> directory of your study area into the <code class="highlighter-rouge">lsdtt/data/dem-analysis</code> directory, and unzip it into the <code class="highlighter-rouge">inputs</code> directory. To do so, execute the following sequence of commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set the current directory as lsdtt/data/dem-analysis</span>
+<span class="nb">cd
+cd </span>lsdtt/data/dem-analysis
+
+<span class="c"># List files in the repository of the practical sessions</span>
+<span class="nb">ls</span> /storepelican/fclapuyt/LGEO2240-DEM/
+
+<span class="c"># Copy your archive file into the current directory</span>
+<span class="nb">cp</span> /storepelican/fclapuyt/LGEO2240-DEM/NAME_OF_STUDY_AREA.zip ./
+
+<span class="c"># Unzip the archive file into the current directory</span>
+unzip NAME_OF_STUDY_AREA.zip
+
+<span class="c"># Check that files are properly stored in the current directory</span>
+<span class="nb">ls</span>
+
+<span class="c"># Remove .zip file</span>
+<span class="nb">rm</span> <span class="nt">-f</span> NAME_OF_STUDY_AREA.zip
+</code></pre></div></div>
+
+<h2 id="a-first-topographic-analysis-of-your-study-area">A first topographic analysis of your study area</h2>
+
+<ol>
+  <li>
+    <p>Create a parameters file in the <code class="highlighter-rouge">dem-analysis</code> directory:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">cd
+ cd </span>lsdtt/data/dem-analysis
+ vim basic-analysis.driver
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Paste the following content that might be something plausible for your study area. Adapt the parameters to your needs, e.g. the name of the input name and output prefix, minimum and maximum basin sizes, river threshold for contributing pixels.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># Parameters for extracting simple surface metrics</span>
+ <span class="c"># Comments are preceeded by the hash symbol</span>
+ <span class="c"># Documentation can be found at: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html</span>
+    
+ <span class="c"># These are parameters for the file i/o</span>
+ <span class="c"># read fname and write fname should be the same, if you want to visualise your outputs</span>
+ <span class="c"># using LSDMappingTools...</span>
+ <span class="nb">read </span>fname: dem-raw
+ write fname: dem-raw
+ channel heads fname: NULL
+    
+ <span class="c"># Compute filled DEM</span>
+ print_fill_raster: <span class="nb">true</span>
+    
+ <span class="c"># Compute longitudinal distance from outlets</span>
+ print_distance_from_outlet: <span class="nb">true</span>
+    
+ <span class="c"># Compute D8 drainage area</span>
+ print_d8_drainage_area_raster: <span class="nb">true</span>
+    
+ <span class="c"># Parameters for surface metrics</span>
+ surface_fitting_radius: 50
+    
+ <span class="c"># Compute surface metrics</span>
+ print_slope: <span class="nb">true
+ </span>print_aspect: <span class="nb">true
+ </span>print_curvature: <span class="nb">true
+ </span>write_hillshade: <span class="nb">true</span>
+    
+ <span class="c"># Compute basic channel network</span>
+ threshold_contributing_pixels: 1000
+ print_junctions_to_csv: <span class="nb">true
+ </span>print_channels_to_csv: <span class="nb">true
+ </span>print_sources_to_csv: <span class="nb">true</span>
+    
+ <span class="c"># Compute basic chi metrics</span>
+ print_chi_data_maps: <span class="nb">true</span>
+    
+ <span class="c"># Parameters for basin creation</span>
+ find_basins: <span class="nb">true
+ </span>minimum_basin_size_pixels: 10000
+ maximum_basin_size_pixels: 1000000
+    
+ <span class="c"># Create the basin raster</span>
+ print_basin_raster: <span class="nb">true</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the <code class="highlighter-rouge">lsdtt-basic-metric</code> module on the created parameter file:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> lsdtt-basic-metrics basic-analysis.driver
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>It will take some time to run. But you will quickly see that it runs very fast in comparison to QGIS given the amount of pixels to process and outputs created. Many outputs are created (!): filled, dem, slope, aspect, curvature and tangential curvature, hillshade, river network, chi metrics, flow distance… From here, you will begin to understand that learning all the shell / server / LSDTopoTools stuff could really worth it… :-)</p>
+  </li>
+</ol>
+
+<blockquote>
+  <p>For easier use with LSDMappingTools, you should use the input DEM name as <code class="highlighter-rouge">write fname</code> parameter, i.e. <code class="highlighter-rouge">read fname</code> and <code class="highlighter-rouge">write fname</code> should have the same value.</p>
+</blockquote>
+
+<h2 id="data-visualisation-on-the-server">Data visualisation on the server</h2>
+
+<p>The LSDMappingTools module enables to visualise data without downloading the data on your local drive and open them in QGIS. Once  you have created your outputs, you can plot the DEM with the superimposed basins with the <code class="highlighter-rouge">PlotBasicRaster.py</code> tool:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python ~/lsdtt/LSDMappingTools/PlotBasicRasters.py <span class="nt">-dir</span> ./ <span class="nt">-fname</span> PREFIX_OF_OUTPUTS_FILE <span class="nt">-drape_fname</span> PREFIX_OF_OUTPUTS_FILE <span class="nt">-PD</span> True <span class="nt">-PB</span> True <span class="nt">-dpi</span> 300
+</code></pre></div></div>
+
+<p>Outputs of LSDMappingTools are created in a new directory <code class="highlighter-rouge">raster_plots</code> that is created in the <code class="highlighter-rouge">dem-analysis</code> directory. To visualise them:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># List files in the raster_plots directory</span>
+<span class="nb">ls </span>raster_plots
+<span class="c"># Display the output you want...</span>
+display raster_plots/PREFIX_OF_OUTPUTS_FILE_basins_selected_basins.png
+</code></pre></div></div>
+
+<h2 id="manage-outputs-of-successive-analyses">Manage outputs of successive analyses</h2>
+
+<p>In order to keep track of all your analyses, you could, <em>for instance</em>, duplicate the <code class="highlighter-rouge">dem-analysis</code> directory for each new analysis, rename the old one and empty the <em>main</em> <code class="highlighter-rouge">dem-analysis</code> directory. This could be done using the following sequence of commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Enter data directory</span>
+<span class="nb">cd
+cd </span>lsdtt/data
+
+<span class="c"># Copy dem-analysis directory as dem-analysis-v1 (name to be adapted to your needs)</span>
+<span class="nb">cp</span> <span class="nt">-r</span> dem-analysis dem-analysis-v1
+</code></pre></div></div>
+
+<p>Finally, remove outputs in <code class="highlighter-rouge">dem-analysis</code> directory. Outputs are named as follows <code class="highlighter-rouge">PREFIX_TYPE-OF-OUTPUTS.EXT</code>, e.g. <code class="highlighter-rouge">dem-ambleve-10m_SLOPE.tif</code>,  <code class="highlighter-rouge">dem-ambleve-10m_TAN.tif</code> or <code class="highlighter-rouge">dem-ambleve-10m_SLOPE.tif</code>. To remove all outputs in one command, use the asterisk <code class="highlighter-rouge">*</code> to select all files that begin with <code class="highlighter-rouge">PREFIX_</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-f</span> dem-analysis/dem-raw_<span class="k">*</span>
+</code></pre></div></div>
+
+<h2 id="data-transfer">Data transfer</h2>
+
+<p>Data transfer can be done in the two <em>directions</em>, i.e. download data from the server to your local drive (outputs) and upload data from your local drive to the server (i.e. parameters files, river junctions,..).</p>
+
+<h3 id="on-windows">On Windows</h3>
+
+<p>In the MobaXterm interface, you can simply download and upload files using the file browser on the left panel. Use the buttons on the top of the file browser or right-click on files and directories.</p>
+
+<p><img src="imgs/mobaxterm-sftp.png" alt="mobaxterm-sftp" /></p>
+
+<h3 id="on-mac--linux---windows">On Mac / Linux  / Windows</h3>
+
+<p>There is no GUI for file transfer in Terminus. Instead, you have two possibilities:</p>
+
+<ul>
+  <li>Use <a href="https://nextcloud.cism.ucl.ac.be">Nextcloud</a> with a mounted external storage. See the document <code class="highlighter-rouge">1_Technical_resources</code> for more info.</li>
+  <li>
+    <p>Use a local session of the terminal (using the <code class="highlighter-rouge">+</code> in the Menu bar) to execute this type of commands:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  scp <span class="nt">-r</span> <span class="nt">-oProxyCommand</span><span class="o">=</span><span class="s2">"ssh -W %h:%p MY_LOGIN@gwcism.cism.ucl.ac.be"</span> MY_LOGIN@pelican.cism.ucl.ac.be:PATH_TO_FOLDER_ON_THE_SERVER/<span class="k">*</span> PATH_TO_FOLDER_ON_LOCAL_MACHINE
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><img src="imgs/terminus-local-terminal.png" alt="terminus-local-terminal" /></p>
+
+<hr />
+
+<h2 id="whats-next-">What’s next ?</h2>
+
+<p>Now, you are able to perform a basic topographic analysis on a very large amount of pixels in a very limited amount of time… Three modules of LSDTopoTools are useful for the analyses to achieve in the frame of the research project:</p>
+
+<ul>
+  <li>The basic analysis (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html">resources</a>): <code class="highlighter-rouge">lsdtt-basic-metrics</code></li>
+  <li>The channel extraction (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html">resources</a>): <code class="highlighter-rouge">lsdtt-channel-extraction</code>.</li>
+  <li>The Chi analysis (<a href="https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html">resources</a>): <code class="highlighter-rouge">lsdtt-chi-mapping</code>.</li>
+</ul>
+
+<p>The manual for each module contains a lot of information… Focus <em>mainly</em> on “Appendix A” of each manual, which contains the parameters that are available, their explanation, and their potential to fulfill your needs. Each module works with a parameters file that has the same structure than the one you used for the first analysis of your study area. You <em>only</em> need to add or remove parameters in the fill and run it with the proper command.</p>
+
+<hr />
+
+<h1 id="important-note-">Important note !</h1>
+
+<p>Each time you connect to the server, you will need to load LSDTopoTools before running the first command. Simply type:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>load_LSDTopoTools
+</code></pre></div></div>
+
+<hr />
+
