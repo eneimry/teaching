@@ -28,3 +28,17 @@ gdal_translate -of ENVI dem-input.tif dem-output.bil
 ```
 
 More info [here](https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html).
+
+## Zip / Unzip folders
+
+To zip folders:
+
+```bash
+zip -r MY_ZIPPED_FILE.zip MY_FOLDER_TO_ZIP
+```
+
+To unzip folders:
+
+```bash
+unzip MY_ZIPPED_FILE.zip
+```
