@@ -29,11 +29,15 @@ nav_order: 4
 
 **IMPORTANT:** From now, all parameters in UPPERCASE need to be adjusted according to your study area / login / directory structure...
 
-The DEM of your study are is stored as an archive file `.zip` in the `/storepelican/fclapuyt/LGEO2240-DEM/` directory.
+<!-- The DEM of your study are is stored as an archive file `.zip` in the `/storepelican/fclapuyt/LGEO2240-DEM/` directory. -->
 
-![storepelican-dem](imgs/storepelican-dem.png)
+The DEM of your study are is stored in the `/storepelican/neimry/LGEO2240/watersheds/ directory.
 
-The aim is to copy the `.zip` directory of your study area into the `lsdtt/data/dem-analysis` directory, and unzip it into the `inputs` directory. To do so, execute the following sequence of commands:
+![storepelican-dem](imgs/storepelican-dem-new.png)
+
+<!-- The aim is to copy the `.zip` directory of your study area into the `lsdtt/data/dem-analysis` directory, and unzip it into the `inputs` directory. To do so, execute the following sequence of commands: -->
+
+The aim is to copy the directory of your study area into the `lsdtt/data/dem-analysis` directory. To do so, execute the following sequence of commands:
 
 ```bash
 # Set the current directory as lsdtt/data/dem-analysis
@@ -41,19 +45,14 @@ cd
 cd lsdtt/data/dem-analysis
 
 # List files in the repository of the practical sessions
-ls /storepelican/fclapuyt/LGEO2240-DEM/
+ls /storepelican/neimry/LGEO2240/watersheds/
 
-# Copy your archive file into the current directory
-cp /storepelican/fclapuyt/LGEO2240-DEM/NAME_OF_STUDY_AREA.zip ./
-
-# Unzip the archive file into the current directory
-unzip NAME_OF_STUDY_AREA.zip
+# Copy your file into the current directory
+cp -rf /storepelican/neimry/LGEO2240/watersheds/NAME_OF_STUDY_AREA/ .
 
 # Check that files are properly stored in the current directory
 ls
 
-# Remove .zip file
-rm -f NAME_OF_STUDY_AREA.zip
 ```
 
 ## A first topographic analysis of your study area
@@ -142,6 +141,8 @@ ls raster_plots
 # Display the output you want...
 display raster_plots/PREFIX_OF_OUTPUTS_FILE_basins_selected_basins.png
 ```
+
+If you want to custom your plots, you just need to add a few parameters to the command (see the [documentation](https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_visualisation.html) for the possibilities).
 
 ## Manage outputs of successive analyses
 

@@ -17,7 +17,7 @@ The software is more efficiently and easier to use when deployed on a remote Lin
 
 ![client-server-illus](imgs/client-server-model.png)
 
-The server that we will use during the practical sessions is the "Pelican" server, which is part of the [CISM](https://uclouvain.be/en/research/cism) (Center for High Performance Computing and Mass Storage) of the UCLouvain. The Pelican server will allow you to run LSDTopotools, but also provides Nextcloud and JupyterHub services. [Nextcloud](https://nextcloud.com/) is an open-source file hosting service (similar to Dropbox, OneDrive,...). [JupyterHub](https://jupyter.org/hub) is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.
+The server that we will use during the practical sessions is the "Pelican" server, which is part of the [CISM](https://uclouvain.be/en/research/cism) (Center for High Performance Computing and Mass Storage) of the UCLouvain. The Pelican server will allow you to run LSDTopotools, but also provides Nextcloud and JupyterHub services. [Nextcloud](https://nextcloud.com/) is an open-source file hosting service (similar to Dropbox, OneDrive,...). [JupyterHub]((https://jupyter.org/hub)) is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.
 
 ### SSH protocol and client
 
@@ -53,7 +53,7 @@ In order to connect to the server, a CISM account is required. To create one, yo
 
 ### On Windows
 
-**Side note:** If you are working on a UCL desktop PC, simply open MobaXterm software (Search by name ou via "Menu Démarrer > Electricité")
+**Side note:** If you are working on a UCLouvain desktop PC, simply open MobaXterm software (Search by name ou via "Menu Démarrer > Electricité")
 
 To install MobaXterm on your machine, follow these steps:
 
@@ -172,7 +172,7 @@ Now, the SSH connection (via the gateway) is set up and you can connect to the P
 
 -----
 
-## Nextcloud
+<!-- ## Nextcloud
 
 [Nextcloud](https://nextcloud.com/) is an open-source file hosting service (similar to Dropbox, OneDrive,...) and is available on the Pelican server with your CISM login and password, here: [https://nextcloud.cism.ucl.ac.be](https://nextcloud.cism.ucl.ac.be). You can install a desktop client via the website of Nextcloud.
 
@@ -201,4 +201,12 @@ To connect an external storage, i.e. your home folder on the Pelican server, fol
 
     ![nextcloud-external-storage](imgs/nextcloud-external-storage.png)
 
-5. Files on folders on the Pelican servers are now accessible in your folder structure in the home page of the Nextcloud web interface.
+5. Files on folders on the Pelican servers are now accessible in your folder structure in the home page of the Nextcloud web interface. -->
+
+## JupyterHub
+
+[JupyterHub](https://jupyter.org/hub) is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. The Pelican server is also available on JupyterHub with your CISM login and password: [JupyterHub-CISM](https://jupyterhub.cism.ucl.ac.be/hub/login)
+
+![jupyter-interface](imgs/jupyterhub-interface.png)
+
+During the practical sessions, JupyterHub can be used as a way to transfer files from your PC to the server and vice-versa. It will mainly be used by Mac and Linux users. For those on Windows who are using MobaXterm, it is not a necessary step, as MobaXterm provides an integrated SFTP interface (but you can still use JupyterHub if that suits you better).

@@ -21,7 +21,7 @@ LSDTopotools requires DEM in `bil` format, projected in the UTM coordinate syste
 
 ```bash
 # Project DEM into UTM projection
-gdalwarp -t_srs '+proj=utm +zone=31 +datum=WGS84' -of ENVI -dstnodata -9999 -tr 10 10 -r bilinear input_filename.tif output_filename.bil
+gdalwarp -t_srs EPSG:32631 -of ENVI -dstnodata -9999 -tr 10 10 -r bilinear input_filename.tif output_filename.bil
 
 # Convert the DEM into a ENVI BIL format
 gdal_translate -of ENVI dem-input.tif dem-output.bil

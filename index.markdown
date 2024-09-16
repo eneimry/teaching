@@ -21,6 +21,9 @@ permalink: /
 > This repository collects didactic material in Physical Geography tailored for students of the School of Geography at UCLouvain (Belgium).
 >
 > Author: François Clapuyt (francois.clapuyt@uclouvain.be)
+> 
+> Update: Emile Neimry (emile.neimry@uclouvain)
+
 <br>
 <br>
 <div class="card" style="width: 18rem;">
