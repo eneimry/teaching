@@ -34,7 +34,7 @@ SSH clients are softwares which enable the user to connect to the server using t
 
 In order to connect to the server, a CISM account is required. To create one, you first need to be **connected to the UCLouvain network**, i.e. via the wireless network, a computer in a didactic room or via [UDS](https://uds.siws.ucl.ac.be/login/) (in this case, use Firefox and not Chrome as a browser).  
 
-1. Visit the following web adress: [https://www.cism.ucl.ac.be/cilog](https://www.cism.ucl.ac.be/cilog)
+1. Visit the following web adress: [https://login.cism.ucl.ac.be/init/](https://login.cism.ucl.ac.be/init/)
 2. Submit your **@student.uclouvain.be** email adress via the form.
 3. Follow the link that you will nearly instantly receive by email.
 4. Fill in the form with the following details:
