@@ -156,7 +156,7 @@ cd lsdtt/data
 cp -r dem-analysis dem-analysis-v1
 ```
 
-Finally, remove outputs in `dem-analysis` directory. Outputs are named as follows `PREFIX_TYPE-OF-OUTPUTS.EXT`, e.g. `dem-ambleve-10m_SLOPE.tif`, `dem-ambleve-10m_TAN.tif` or `dem-ambleve-10m_SLOPE.tif`. To remove all outputs in one command, use the asterisk `*` to select all files that begin with `PREFIX_OF_OUTPUTS_FILE_`. Do not forget the last '`_`' after the prefix, otherwise the dem will also be deleted.
+Finally, remove outputs in `dem-analysis` directory. Outputs are named as follows `PREFIX_TYPE-OF-OUTPUTS.EXT`, e.g. `dem-ambleve-10m_SLOPE.tif`, `dem-ambleve-10m_TAN.tif` or `dem-ambleve-10m_SLOPE.tif`. To remove all outputs in one command, use the asterisk `*` to select all files that begin with `PREFIX_OF_OUTPUTS_FILE_`. Do not forget the last '`_`' after the prefix, otherwise the DEM will also be deleted.
 
 ``` bash
 rm -f dem-analysis/PREFIX_OF_OUTPUTS_FILE_*
