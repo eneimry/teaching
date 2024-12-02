@@ -188,18 +188,6 @@ There is no GUI for file transfer in Terminus. Instead, you have two possibiliti
 
 ------------------------------------------------------------------------
 
-## What's next ?
-
-Now, you are able to perform a basic topographic analysis on a very large amount of pixels in a very limited amount of time... Three modules of LSDTopoTools are useful for the analyses to achieve in the frame of the research project:
-
--   The basic analysis ([resources](https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html)): `lsdtt-basic-metrics`
--   The channel extraction ([resources](https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html)): `lsdtt-channel-extraction`.
--   The Chi analysis ([resources](https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html)): `lsdtt-chi-mapping`.
-
-The manual for each module contains a lot of information... Focus *mainly* on "Appendix A" of each manual, which contains the parameters that are available, their explanation, and their potential to fulfill your needs. Each module works with a parameters file that has the same structure than the one you used for the first analysis of your study area. You *only* need to add or remove parameters in the fill and run it with the proper command.
-
-------------------------------------------------------------------------
-
 # Important note !
 
 Each time you connect to the server, you will need to load LSDTopoTools before running the first command. Simply type:
